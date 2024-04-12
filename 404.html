@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Страница не найдена</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 10em;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            10% { transform: translateX(-10px) rotate(-5deg); }
+            20% { transform: translateX(10px) rotate(5deg); }
+            30% { transform: translateX(-10px) rotate(-5deg); }
+            40% { transform: translateX(10px) rotate(5deg); }
+            50% { transform: translateX(-10px) rotate(-5deg); }
+            60% { transform: translateX(10px) rotate(5deg); }
+            70% { transform: translateX(-10px) rotate(-5deg); }
+            80% { transform: translateX(10px) rotate(5deg); }
+            90% { transform: translateX(-10px) rotate(-5deg); }
+            100% { transform: translateX(0); }
+        }
+
+        .animated {
+            animation: shake 0.6s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animated glitch"><span>4</span><span>0</span><span>4</span></h1>
+        <p class="animated glitch">Страница не найдена</p>
+        <p class="description">Упс! Возможно, страница, которую вы ищете, была удалена или временно недоступна.</p>
+        <button class="button" onclick="redirectToHome()">На главную</button>
+    </div>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = "https://ileskov.ee/";
+        }
+    </script>
+</body>
+</html>
