@@ -1,0 +1,18 @@
+        .scroll-right-icon img {
+           width: 40px;
+           height: 40px;
+           filter: brightness(0) invert(1) brightness(80%);
+           cursor: pointer;
+        }
+		
+		.scroll-right-icon {
+           position: absolute;
+           top: 20px;
+           right: 10px;
+           animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+           0% { transform: translateY(0); }
+           100% { transform: translateY(-10px); }
+        }

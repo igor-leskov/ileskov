@@ -1,0 +1,39 @@
+        .gallery {
+           display: flex;
+           flex-wrap: wrap;
+		   margin-bottom: 0;
+           gap: 20px;
+        }
+
+        .gallery-item {
+           flex: 0 0 calc(33.33% - 20px);
+           animation: fadeInGallery 1s ease; 
+        }
+
+        @keyframes fadeInGallery {
+           from {
+           opacity: 0;
+           transform: translateY(-20px);
+        }
+           to {
+           opacity: 1;
+           transform: translateY(0);
+        }
+    }
+
+        .gallery-item img {
+           width: 100%;
+           border-radius: 5px;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+           transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+           transform: scale(0.9);
+        }
+
+        @media screen and (max-width: 768px) {
+        .gallery-item {
+           flex: 0 0 calc(50% - 20px);
+        }
+    }

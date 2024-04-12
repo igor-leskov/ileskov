@@ -1,0 +1,201 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+		
+		header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            max-width: 60px;
+            margin-left: 20px;
+            animation: fadeIn 1s ease;
+			transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(0.9);
+        }
+
+        @keyframes fadeIn {
+            from {
+            opacity: 0;
+        }
+            to {
+            opacity: 1;
+        }
+    }
+
+        nav ul {
+            list-style-type: none;
+			align-items: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+            position: relative; 
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            padding: 20px;
+        }
+		
+		footer {
+           background-color: #333;
+           color: #fff;
+           text-align: center;
+		   position: fixed;
+           bottom: 0;
+           width: 96%;
+           padding: 10px 30px;
+           display: flex;
+		   flex-direction: row;
+           align-items: center;
+           justify-content: space-between;
+		   margin-top: -40px;
+        }
+
+        .social-icons img {
+           max-width: 30px;
+           margin-right: 10px;
+		   transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+           transform: scale(0.9); 
+        }
+		
+		.footer-link {
+           color: white;
+        }
+
+
+        .footer-content {
+           display: flex;
+           align-items: center;
+        }
+
+        .footer-content p {
+           margin: 0;
+        }
+		
+		h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+		
+		.language-switcher {
+            display: flex;
+            margin-right: 30px;
+            animation: appear 0.5s ease forwards; 
+            opacity: 0; 
+        }
+
+        @keyframes appear {
+            from {
+            opacity: 0; 
+            transform: translateY(-20px); 
+        }
+            to {
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    }
+
+        .language-link img {
+            width: 40px;
+            height: 40px;
+            margin-right: -20px;
+            transition: transform 0.3s ease; 
+        }
+
+        .language-link:hover img {
+            transform: scale(0.9); 
+        }
+		
+		  #cookie-consent-bar {
+            display: none;
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            background-color: #5d5d5d; 
+            color: #fff; 
+            padding: 10px 20px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        #cookie-consent-bar p {
+            margin: 0;
+        }
+
+        #cookie-consent-bar button {
+            background-color: #8d8d8d; 
+            color: #000; 
+            border: none;
+            padding: 8px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #cookie-consent-bar button:hover {
+            background-color: #fff; 
+        }
+
+		 footer a {
+            color: #fff;
+            text-decoration: none;
+		}
+		
+		main a {
+            color: #333;
+            text-decoration: none; 
+        }
+		

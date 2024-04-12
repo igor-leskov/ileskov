@@ -1,0 +1,189 @@
+        @font-face {
+            font-family: 'Roboto';
+            src: url('fonts/Sair.woff2') format('woff2'),
+            url('fonts/Saira.woff') format('woff');
+            font-display: swap; 
+        }
+
+        body {
+			font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #000;
+        }
+        
+        header nav {
+          display: none;
+          position: absolute;
+          margin-top: 60px; 
+          left: 0;
+          width: 100%;
+          background-color: #fff;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          transition: margin-top 0.3s ease-in-out; 
+          height: 200px; 
+          overflow-y: auto; 
+          z-index: 999; 
+        }
+		
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 5px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1000; 
+        }
+
+        header img {
+            max-width: 60px;
+            margin-left: 20px;
+            animation: fadeIn 1s ease; 
+        transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(0.9);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px; 
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        header nav {
+              display: none;
+              position: absolute;
+              top: calc(100% + 10px); 
+              left: 0;
+              width: 100%;
+              background-color: #fff;
+              box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+              transition: top 0.3s ease-in-out;
+              height: 200px;
+              overflow-y: auto;
+			  height: 0; 
+              overflow: hidden; 
+              z-index: 999;
+        }
+
+        header nav.open {
+              display: block;
+              top: calc(25%);
+              height: auto; 		  
+        }
+
+        header nav ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+        }
+
+        header nav ul li {
+               padding: 10px;
+               color: #000;
+        }
+
+        header nav ul li a {
+               text-decoration: none;
+               color: inherit;
+               display: block;
+        }
+
+        header nav ul li a:hover {
+               background-color: initial;
+        }
+		
+        footer {
+               background-color: #333;
+               color: #fff;
+               text-align: center;
+               padding: 10px 5px;
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               padding-left: 30px;
+               padding-right: 30px;
+			   margin-top: -40px;
+        }
+		
+		footer p {
+			   font-size: 12px;
+               line-height: 1.6;
+			   color: #fff;
+	    }
+		
+		.footer-link {
+			   color: #fff;
+		}
+			
+		.footer-spacer {
+               flex: 1;
+               margin: 0 5px;
+        }
+
+        .footer-content {
+               display: flex;
+               align-items: center;
+        }
+
+        .footer-content p {
+               margin: 0;
+        }
+	
+	    header nav {
+            transition: top 0.3s ease-in-out, display 0.3s ease;
+        }
+
+        header nav {
+            display: none;
+        }
+		
+		@keyframes blink {
+            0% { color: #ff0000; }
+            50% { color: #000; }
+            100% { color: #ff0000; }
+        }
+
+        .blinking-text {
+            animation: blink 1s infinite;
+			font-size: 10px;
+        }
+		
+		a {
+            text-decoration: none;
+        }
+		
+		.blinking-text-1 {
+            animation: blink 1s infinite;
+        }
+		
+		

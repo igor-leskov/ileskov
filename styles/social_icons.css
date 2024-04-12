@@ -1,0 +1,16 @@
+.social-icons img {
+           max-width: 30px;
+           margin-right: 10px;
+		   transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+               transform: scale(0.9); 
+        }
+
+        @media screen and (max-width: 767px) {
+            body {
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+    }
