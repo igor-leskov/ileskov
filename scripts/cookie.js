@@ -9,7 +9,6 @@ window.onload = function() {
     fixCookieConsentBarPosition();
 }
 
-// Закрывающая скобка для window.onload функции
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
