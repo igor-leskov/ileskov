@@ -1,4 +1,14 @@
-const likeButtons = document.querySelectorAll('.like-button');
+const newsFeed = document.querySelector('.news-feed');
+
+// Обработчик клика по кнопкам лайка внутри родительского элемента новостей
+newsFeed.addEventListener('click', function(event) {
+    // Проверяем, что клик был именно по кнопке лайка
+    if (event.target.classList.contains('like-button')) {
+        const button = event.target;
+        updateLikeCount(button);
+        saveLikesToCookie(button);
+    }
+});
 
 // Функция для обновления счетчика лайков
 function updateLikeCount(button) {
@@ -15,6 +25,7 @@ function updateLikeCount(button) {
 
 // При загрузке страницы восстанавливаем счетчики лайков из куки
 window.onload = function() {
+    const likeButtons = document.querySelectorAll('.like-button');
     likeButtons.forEach(button => {
         const buttonId = button.dataset.id;
         const likesCookie = getCookie(`likes_${buttonId}`);
@@ -37,9 +48,9 @@ function getCookie(name) {
     return null;
 }
 
-// Обработчик клика по кнопке лайка
-likeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        updateLikeCount(this);
-    });
-});
+// Функция для сохранения информации о лайках в куки
+function saveLikesToCookie(button) {
+    const buttonId = button.dataset.id;
+    const count = button.dataset.likes || 0;
+    document.cookie = `likes_${buttonId}=${count}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+}
