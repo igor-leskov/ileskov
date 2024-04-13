@@ -494,8 +494,21 @@
         <p><a href="mailto:info@ileskov.ee" style="color: white;">info@ileskov.ee</a></p>
     </footer>
     
-	<script src="scripts/video_player.js" defer></script>
-	<script src="scripts/loading.js" defer></script>
+	<script>
+	    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('scripts/service_worker.js')
+      .then(function(registration) {
+        console.log('Service Worker зарегистрирован успешно:', registration);
+      })
+      .catch(function(error) {
+        console.log('Ошибка при регистрации Service Worker:', error);
+      });
+  });
+}
+</script>
+    <script src="scripts/video_player.js" defer></script>
+    <script src="scripts/loading.js" defer></script>
     <script src="scripts/audio_player.js" defer></script>
     <script src="scripts/modal_gallery.js" defer></script>
     <script src="scripts/cookie.js" defer></script>
