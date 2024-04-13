@@ -9,7 +9,6 @@ newsFeed.addEventListener('click', function(event) {
      
         const button = target.closest('.like-button');
 
-        /
         if (!button.dataset.likes) {
            
             updateLikeCount(button);
