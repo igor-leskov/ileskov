@@ -3,6 +3,10 @@ const urlsToCache = [
   '/styles/header_footer.css',
   '/scripts/like.js',
   '/images/logo.webp',
+  '/video/video1.webp',
+  '/video/video2.webp',
+  '/video/video3.webp',
+  '/video/video4.webp',
 ];
 
 self.addEventListener('install', function(event) {
