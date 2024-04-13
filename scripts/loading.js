@@ -1,4 +1,3 @@
-// Функция для загрузки изображения
 function loadImage(imageUrl) {
     return new Promise(function(resolve, reject) {
         var img = new Image();
@@ -12,14 +11,12 @@ function loadImage(imageUrl) {
     });
 }
 
-// Функция для стремительной загрузки изображений
 function eagerLoadImages(imageUrls) {
     return Promise.all(imageUrls.map(function(imageUrl) {
         return loadImage(imageUrl);
     }));
 }
 
-// Функция для автоматической загрузки изображений
 function autoLoadImages(imageUrls) {
     return Promise.all(imageUrls.map(function(imageUrl) {
         if (imageInViewport(imageUrl)) {
@@ -28,20 +25,28 @@ function autoLoadImages(imageUrls) {
     }));
 }
 
-// Функция для отложенной загрузки изображений
 function lazyLoadImages(imageUrls) {
     return Promise.all(imageUrls.map(function(imageUrl) {
         return loadImageLazy(imageUrl);
     }));
 }
 
-// Функция для определения, видимо ли изображение во viewport
 function imageInViewport(imageUrl) {
-    // Реализация проверки видимости изображения во viewport
-    // Ваш код здесь
+    var image = document.querySelector('img[src="' + imageUrl + '"]');
+    if (!image) {
+        return false; 
+    }
+
+    var imageRect = image.getBoundingClientRect();
+    var imageTop = imageRect.top;
+    var imageBottom = imageRect.bottom;
+
+    var viewportTop = 0;
+    var viewportBottom = window.innerHeight || document.documentElement.clientHeight;
+
+    return (imageTop < viewportBottom) && (imageBottom > viewportTop);
 }
 
-// Автоматическое обнаружение и загрузка изображений с атрибутом loading
 function processImagesWithLoadingAttribute() {
     var imagesWithLoadingAttribute = document.querySelectorAll('img[loading]');
     var imageUrls = [];
@@ -49,7 +54,6 @@ function processImagesWithLoadingAttribute() {
         imageUrls.push(img.src);
     });
     
-    // Определение метода загрузки
     var loadMethod;
     switch (document.loading) {
         case 'eager':
@@ -63,17 +67,15 @@ function processImagesWithLoadingAttribute() {
             loadMethod = lazyLoadImages;
     }
 
-    // Загрузка изображений с использованием выбранного метода
     loadMethod(imageUrls).then(function(images) {
-        // Обработка успешной загрузки изображений
+
         console.log('Изображения успешно загружены:', images);
     }).catch(function(error) {
-        // Обработка ошибок загрузки изображений
+
         console.error('Ошибка загрузки изображений:', error);
     });
 }
 
-// Автоматическое обнаружение изображений с атрибутом loading при загрузке страницы
 window.onload = function() {
     processImagesWithLoadingAttribute();
 };
