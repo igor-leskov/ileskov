@@ -1,75 +1,52 @@
+// Функция загрузки изображений с атрибутом loading="auto"
+function loadingAutoImages(duration, interval = 100) {
+    const images = document.querySelectorAll('img[loading="auto"]');
+    loadImages(images, duration, interval);
+}
+
+// Функция загрузки изображений с атрибутом loading="eager"
 function loadingAutoImages(duration, interval = 100) {
     const images = document.querySelectorAll('img[loading="eager"]');
-    const totalImages = images.length;
-    let loadedImages = 0;
-    const loadingBar = document.getElementById('loading-bar');
-    const intervalId = setInterval(() => {
-        const progress = '='.repeat(loadedImages) + '>' + ' '.repeat(totalImages - loadedImages - 1);
-        const percentage = (loadedImages / totalImages) * 100;
-        loadingBar.textContent = `Loading images: [${progress}] ${Math.floor(percentage)}%`;
-        if (loadedImages === totalImages) {
-            clearInterval(intervalId);
-            loadingBar.textContent += "\nAll images loaded!";
-        }
-    }, interval);
-
-    images.forEach((image) => {
-        image.onload = () => {
-            loadedImages++;
-        };
-    });
+    loadImages(images, duration, interval);
 }
 
+// Функция загрузки изображений с атрибутом loading="lazy"
 function loadingLazyImages(duration, interval = 100) {
-    const startTime = Date.now();
     const images = document.querySelectorAll('img[loading="lazy"]');
-    const totalImages = images.length;
-    let loadedImages = 0;
-    const loadingBar = document.getElementById('loading-bar');
-    const intervalId = setInterval(() => {
-        const currentTime = Date.now();
-        const elapsed = currentTime - startTime;
-        const elapsedSeconds = elapsed / 1000;
-        const progress = '='.repeat(Math.min(Math.floor(elapsedSeconds / duration * totalImages), totalImages));
-        const percentage = (loadedImages / totalImages) * 100;
-        loadingBar.textContent = `Loading images: [${progress}] ${Math.floor(percentage)}%`;
-        if (loadedImages === totalImages) {
-            clearInterval(intervalId);
-            loadingBar.textContent += "\nAll images loaded!";
-        }
-    }, interval);
-
-    images.forEach((image) => {
-        image.onload = () => {
-            loadedImages++;
-        };
-    });
+    loadImages(images, duration, interval);
 }
 
-function loadingEagerImages(duration, interval = 100) {
-    const images = document.querySelectorAll('img[loading="eager"]');
+// Вспомогательная функция для загрузки изображений
+function loadImages(images, duration, interval) {
     const totalImages = images.length;
     let loadedImages = 0;
-    const loadingBar = document.getElementById('loading-bar');
-    const intervalId = setInterval(() => {
+
+    // Функция обновления прогресса загрузки
+    function updateProgress() {
         const progress = '='.repeat(loadedImages) + '>' + ' '.repeat(totalImages - loadedImages - 1);
         const percentage = (loadedImages / totalImages) * 100;
-        loadingBar.textContent = `Loading images: [${progress}] ${Math.floor(percentage)}%`;
+        console.log(`Loading images: [${progress}] ${Math.floor(percentage)}%`);
         if (loadedImages === totalImages) {
-            clearInterval(intervalId);
-            loadingBar.textContent += "\nAll images loaded!";
+            console.log("All images loaded!");
         }
-    }, interval);
+    }
 
+    // Отслеживание загрузки каждого изображения
     images.forEach((image) => {
         image.onload = () => {
             loadedImages++;
+            updateProgress();
         };
     });
+
+    // Запуск таймера для симуляции продолжительности загрузки
+    setTimeout(() => {
+        // Здесь вы можете дополнительно отслеживать загрузку изображений во времени, если нужно
+    }, duration * 1000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Запуск загрузки изображений при загрузке страницы
     loadingAutoImages(5);
-    setTimeout(() => loadingLazyImages(5), 2000); // Задержка lazy loading на 2 секунды после загрузки страницы
-    setTimeout(() => loadingEagerImages(5), 4000); // Задержка eager loading на 4 секунды после загрузки страницы
+    setTimeout(() => loadingLazyImages(5), 2000); // Задержка загрузки lazy loading на 2 секунды после загрузки страницы
 });
