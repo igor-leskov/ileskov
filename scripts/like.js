@@ -3,8 +3,8 @@ const newsFeed = document.querySelector('.news-feed');
 // Обработчик клика по кнопкам лайка внутри родительского элемента новостей
 newsFeed.addEventListener('click', function(event) {
     // Проверяем, что клик был именно по кнопке лайка
-    if (event.target.classList.contains('like-button')) {
-        const button = event.target;
+    const button = event.target.closest('.like-button');
+    if (button) {
         updateLikeCount(button);
         saveLikesToCookie(button);
     }
