@@ -1,12 +1,19 @@
-import time
+function loadingAuto(duration, interval = 100) {
+    const startTime = Date.now();
+    const endTime = startTime + duration * 1000;  // Преобразуем секунды в миллисекунды
+    const intervalId = setInterval(() => {
+        const currentTime = Date.now();
+        const progressTime = currentTime - startTime;
+        const progressWidth = Math.floor((progressTime / (duration * 1000)) * 50);
+        const progressPercentage = Math.floor((progressTime / (duration * 1000)) * 100);
+        const progressBar = '='.repeat(progressWidth);
 
-def loading_auto(duration, interval=0.1):
-    start_time = time.time()
-    end_time = start_time + duration
-    while time.time() < end_time:
-        progress = "=" * int((time.time() - start_time) / duration * 50)
-        print(f"\rLoading: [{progress}] {int((time.time() - start_time) / duration * 100)}%", end="", flush=True)
-        time.sleep(interval)
-    print("\nLoading complete!")
+        process.stdout.write(`\rLoading: [${progressBar}] ${progressPercentage}%`);
+        if (currentTime >= endTime) {
+            clearInterval(intervalId);
+            console.log('\nLoading complete!');
+        }
+    }, interval);
+}
 
-loading_auto(5)
+loadingAuto(5);
