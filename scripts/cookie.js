@@ -7,7 +7,9 @@ window.onload = function() {
     }
 
     fixCookieConsentBarPosition();
+}
 
+// Закрывающая скобка для window.onload функции
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -33,7 +35,7 @@ function redirectToPrivacyPolicyRu() {
 }
 
 function redirectToPrivacyPolicyEt() {
-    var policyPage = "privacy_policy-et.html"; 
+    var policyPage = "privacy_policy_et.html"; 
     window.location.href = policyPage;
 }
 
@@ -43,3 +45,4 @@ function fixCookieConsentBarPosition() {
         consentBar.style.position = "fixed";
     }
 }
+
