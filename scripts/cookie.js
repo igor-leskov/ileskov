@@ -7,6 +7,38 @@ window.onload = function() {
     }
 
     fixCookieConsentBarPosition();
+    
+    var likeButtons = document.querySelectorAll('.like-button');
+    likeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var countSpan = button.querySelector('.like-count');
+            var count = parseInt(countSpan.textContent);
+            
+            if (!button.classList.contains('liked')) {
+                count++;
+                countSpan.textContent = count;
+                button.classList.add('liked');
+            } else {
+                count--;
+                countSpan.textContent = count;
+                button.classList.remove('liked');
+            }
+            
+            var likeCount = parseInt(getCookie(button.id)) || 0;
+            likeCount++;
+            setCookie(button.id, likeCount, 30);
+        });
+    });
+};
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 function getCookie(name) {
@@ -44,4 +76,3 @@ function fixCookieConsentBarPosition() {
         consentBar.style.position = "fixed";
     }
 }
-
