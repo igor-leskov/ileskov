@@ -1,8 +1,8 @@
 const CACHE_NAME = 'ileskov_cache';
 const urlsToCache = [
-  '/styles',
-  '/scripts,
-  '/images'
+  '/styles/header_footer.css',
+  '/scripts/like.js',
+  '/images/logo.webp',
 ];
 
 self.addEventListener('install', function(event) {
