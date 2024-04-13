@@ -1,11 +1,18 @@
-import time
+function loadingLazy(duration, interval = 100) {
+    const startTime = Date.now();
+    const intervalId = setInterval(() => {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+        const elapsedSeconds = elapsed / 1000;
+        const progress = Math.floor(elapsedSeconds / duration * 50);
+        const progressBar = '='.repeat(progress) + ' '.repeat(50 - progress);
+        const percentComplete = Math.floor(elapsedSeconds / duration * 100);
+        process.stdout.write(`\rLoading: [${progressBar}] ${percentComplete}%`);
+        if (elapsedSeconds >= duration) {
+            clearInterval(intervalId);
+            console.log("\nLoading complete!");
+        }
+    }, interval);
+}
 
-def loading_lazy(duration, interval=0.1):
-    start_time = time.time()
-    while time.time() - start_time < duration:
-        progress = "=" * min(int((time.time() - start_time) / duration * 50), 50)
-        print(f"\rLoading: [{progress.ljust(50)}] {int((time.time() - start_time) / duration * 100)}%", end="", flush=True)
-        time.sleep(interval)
-    print("\nLoading complete!")
-
-loading_lazy(5)  
+loadingLazy(5);
