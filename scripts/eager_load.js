@@ -1,11 +1,16 @@
-import time
+function loadingEager(duration, interval = 100) {
+    const totalTicks = Math.floor(duration * 1000 / interval);
+    let tick = 0;
+    const intervalId = setInterval(() => {
+        const progress = '='.repeat(tick) + '>' + ' '.repeat(totalTicks - tick - 1);
+        const percentage = ((tick + 1) / totalTicks) * 100;
+        process.stdout.write(`\rLoading: [${progress}] ${Math.floor(percentage)}%`);
+        tick++;
+        if (tick === totalTicks) {
+            clearInterval(intervalId);
+            console.log("\nLoading complete!");
+        }
+    }, interval);
+}
 
-def loading_eager(duration, interval=0.1):
-    total_ticks = int(duration / interval)
-    for tick in range(total_ticks):
-        progress = "=" * tick + ">" + " " * (total_ticks - tick - 1)
-        percentage = (tick + 1) / total_ticks * 100
-        print(f"\rLoading: [{progress}] {int(percentage)}%", end="", flush=True)
-        time.sleep(interval)
-
-loading_eager(5)
+loadingEager(5);
