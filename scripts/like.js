@@ -2,10 +2,16 @@ const newsFeed = document.querySelector('.news-feed');
 
 // Обработчик клика по кнопкам лайка внутри родительского элемента новостей
 newsFeed.addEventListener('click', function(event) {
-    // Проверяем, что клик был именно по кнопке лайка
-    const button = event.target.closest('.like-button');
-    if (button) {
+    // Получаем элемент, на который был сделан клик
+    const target = event.target;
+
+    // Проверяем, является ли элемент кнопкой "like" или находится ли он внутри такой кнопки
+    if (target.classList.contains('like-button') || target.closest('.like-button')) {
+        // Если да, получаем саму кнопку "like"
+        const button = target.closest('.like-button');
+        // Вызываем функцию обновления счетчика лайков
         updateLikeCount(button);
+        // Вызываем функцию сохранения лайков в куки
         saveLikesToCookie(button);
     }
 });
