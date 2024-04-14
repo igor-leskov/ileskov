@@ -2,13 +2,13 @@
    display: flex;
    flex-wrap: wrap;
    gap: 10px;
-   justify-content: center; /* Центрирование элементов в галерее */
+   justify-content: center; 
 }
 
 .gallery-item {
    flex: 0 0 calc(50% - 10px);
    animation: fadeInGallery 1s ease;
-   margin-bottom: 10px; /* Добавление отступа между элементами */
+   margin-bottom: 10px; 
 }
 
 .gallery-item img:hover {
@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 768px) {
    .gallery-item {
-      flex: 0 0 calc(100% - 20px); /* Элементы галереи на мобильных устройствах должны занимать всю ширину */
+      flex: 0 0 calc(100% - 20px); 
    }
 }
 
@@ -33,15 +33,15 @@
 }
 
 .gallery-item img {
-   width: 100%; /* Изображения в галерее на мобильных устройствах должны занимать всю доступную ширину */
-   height: auto; /* Автоматическое вычисление высоты для сохранения пропорций */
+   width: 100%; 
+   height: auto; 
    border-radius: 5px;
 }
 
 form textarea {
    width: calc(100% - 20px);
    height: 100px;
-   margin-bottom: 10px; /* Добавление отступа между textarea и кнопкой */
+   margin-bottom: 10px; 
 }
 
 form button {
