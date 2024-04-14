@@ -1,37 +1,31 @@
- #menu-toggle {
-              font-size: 24px;
-              background: none;
-              border: none;
-              cursor: pointer;
-              color: #fff;
-              margin-right: 0px;
-			  transition: transform 0.3s ease; 
-        }
+#menu-toggle {
+    font-size: 20px; /* Уменьшаем размер кнопки-триггера */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 10px; /* Добавляем небольшой отступ справа */
+    transition: transform 0.3s ease;
+}
 
-        #menu-toggle:hover {
-              transform: scale(0.9); 
-        }
-		
-		#menu-toggle {
-			  display: block;
-	    }
-			   
-		
-		.language-switcher {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 10px; 
-            margin-left: -15px; 
-            background-color: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+#menu-toggle:hover {
+    transform: scale(0.9);
+}
 
-        .language-link {
-            display: inline-block;
-            margin-left: -20px;
-        }
+.language-switcher {
+    display: block; /* Изменяем на блочный элемент для правильного размещения на мобильных устройствах */
+    margin: 10px auto; /* Центрируем переключатель по горизонтали и добавляем отступы */
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center; /* Центрируем текст внутри переключателя */
+}
 
-        .language-link img {
-            vertical-align: middle;
-        }
+.language-link {
+    display: inline-block;
+    margin: 5px; /* Уменьшаем отступы между ссылками */
+}
+
+.language-link img {
+    vertical-align: middle;
+}
