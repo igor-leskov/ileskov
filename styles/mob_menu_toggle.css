@@ -1,3 +1,4 @@
+/* Основные стили */
 #menu-toggle {
     font-size: 20px;
     background: none;
@@ -13,18 +14,34 @@
 }
 
 .language-switcher {
-    display: flex; /* Используем flexbox для выравнивания элементов */
-    align-items: center; /* Выравниваем элементы по вертикали */
-    margin: 10px auto; /* Уменьшаем отступы и центрируем по горизонтали */
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: #333; /* Добавляем фон для ясности */
+    background-color: #333;
 }
 
 .language-link {
-    margin: 0 5px; /* Уменьшаем отступы между ссылками */
+    margin: 0 5px;
 }
 
 .language-link img {
     vertical-align: middle;
+}
+
+/* Адаптация под мобильную версию */
+@media (max-width: 768px) {
+    #menu-toggle {
+        font-size: 16px; /* Уменьшаем размер шрифта */
+    }
+
+    .language-switcher {
+        padding: 3px 5px; /* Уменьшаем отступы */
+        margin: 5px auto; /* Уменьшаем отступы и центрируем */
+    }
+
+    .language-link {
+        margin: 0 3px; /* Уменьшаем отступы между ссылками */
+    }
 }
