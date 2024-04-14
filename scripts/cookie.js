@@ -29,15 +29,13 @@ function saveLikesToLocalStorage(button) {
 }
 
 window.addEventListener('load', function() {
-    
     if (!getCookie("cookieconsent")) {
         var consentBar = document.getElementById("cookie-consent-bar");
         if (consentBar) {
             consentBar.style.display = "block";
+            fixCookieConsentBarPosition();
         }
     }
-
-    fixCookieConsentBarPosition();
 
     const likeButtons = document.querySelectorAll('.like-button');
     likeButtons.forEach(button => {
@@ -52,27 +50,17 @@ window.addEventListener('load', function() {
 
 // Функция для сохранения и отображения общего количества лайков
 function updateTotalLikes() {
-  // Получаем все кнопки лайков
-  const likeButtons = document.querySelectorAll('.like-button');
-  
-  // Для каждой кнопки лайка
-  likeButtons.forEach(button => {
-    // Получаем id новости из data-id атрибута кнопки
-    const newsId = button.getAttribute('data-id');
-    
-    // Получаем количество лайков для данной новости из локального хранилища
-    let likeCount = localStorage.getItem(`likes_${newsId}`);
-    
-    // Если в локальном хранилище нет информации о количестве лайков для данной новости, устанавливаем значение по умолчанию (0)
-    if (likeCount === null) {
-      likeCount = 0;
-    } else {
-      likeCount = parseInt(likeCount);
-    }
-    
-    // Обновляем текст общего количества лайков для данной новости
-    button.querySelector('.total-likes-news').textContent = `общее количество ${likeCount}`;
-  });
+    const likeButtons = document.querySelectorAll('.like-button');
+    likeButtons.forEach(button => {
+        const newsId = button.getAttribute('data-id');
+        let likeCount = localStorage.getItem(`likes_${newsId}`);
+        if (likeCount === null) {
+            likeCount = 0;
+        } else {
+            likeCount = parseInt(likeCount);
+        }
+        button.querySelector('.total-likes-news').textContent = `общее количество ${likeCount}`;
+    });
 }
 
 function setCookie(name, value, days) {
@@ -86,8 +74,8 @@ function setCookie(name, value, days) {
 }
 
 function saveLikesToCookie(button) {
-    const consentAccepted = getCookie("cookieconsent"); 
-    if (consentAccepted) { 
+    const consentAccepted = getCookie("cookieconsent");
+    if (consentAccepted) {
         const buttonId = button.dataset.id;
         const count = button.dataset.likes || 0;
         document.cookie = `likes_${buttonId}=${count}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
@@ -98,7 +86,7 @@ function acceptCookies() {
     setCookie("cookieconsent", "accepted", 30);
     var consentBar = document.getElementById("cookie-consent-bar");
     if (consentBar) {
-        consentBar.style.display = "none"; 
+        consentBar.style.display = "none";
     }
 }
 
@@ -115,66 +103,30 @@ function redirectToPrivacyPolicyRu() {
 }
 
 function redirectToPrivacyPolicyEt() {
-    var policyPage = "privacy_policy_et.html"; 
+    var policyPage = "privacy_policy_et.html";
     window.location.href = policyPage;
 }
 
-window.addEventListener('load', function() {
-    
-    if (!getCookie("cookieconsent")) {
-        var consentBar = document.getElementById("cookie-consent-bar");
-        if (consentBar) {
-            consentBar.style.display = "block";
-        }
-    }
-
-    fixCookieConsentBarPosition();
-
+document.addEventListener('DOMContentLoaded', function() {
     const likeButtons = document.querySelectorAll('.like-button');
     likeButtons.forEach(button => {
-        const buttonId = button.dataset.id;
-        const likesCookie = getCookie(`likes_${buttonId}`);
-        if (likesCookie) {
-            button.dataset.likes = likesCookie;
-            button.querySelector('.like-count').textContent = likesCookie;
-        }
+        button.addEventListener('click', function() {
+            const newsId = button.getAttribute('data-id');
+            const hasLiked = localStorage.getItem(`liked_${newsId}`);
+            if (hasLiked) {
+                return;
+            }
+            let likeCount = localStorage.getItem(`likes_${newsId}`);
+            if (likeCount === null) {
+                likeCount = 0;
+            } else {
+                likeCount = parseInt(likeCount);
+            }
+            likeCount++;
+            localStorage.setItem(`likes_${newsId}`, likeCount);
+            localStorage.setItem(`liked_${newsId}`, true);
+            updateTotalLikes();
+        });
     });
+    updateTotalLikes();
 });
-
-// Обработчик события для кнопки лайка
-document.addEventListener('DOMContentLoaded', function() {
-  const likeButtons = document.querySelectorAll('.like-button');
-  likeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // Получаем id новости
-      const newsId = button.getAttribute('data-id');
-      
-      // Проверяем, есть ли уже лайк от данного пользователя для этой новости
-      const hasLiked = localStorage.getItem(`liked_${newsId}`);
-      if (hasLiked) {
-        // Если пользователь уже поставил лайк, то выходим из функции
-        return;
-      }
-      
-      // Увеличиваем счетчик лайков для данной новости в локальном хранилище
-      let likeCount = localStorage.getItem(`likes_${newsId}`);
-      if (likeCount === null) {
-        likeCount = 0;
-      } else {
-        likeCount = parseInt(likeCount);
-      }
-      likeCount++;
-      localStorage.setItem(`likes_${newsId}`, likeCount);
-      
-      // Запоминаем, что пользователь поставил лайк для этой новости
-      localStorage.setItem(`liked_${newsId}`, true);
-      
-      // Вызываем функцию для обновления общего количества лайков
-      updateTotalLikes();
-    });
-  });
-  
-  // После загрузки страницы обновляем общее количество лайков
-  updateTotalLikes();
-});
-
