@@ -27,7 +27,7 @@ function autoLoadImages(imageUrls) {
 
 function lazyLoadImages(imageUrls) {
     return Promise.all(imageUrls.map(function(imageUrl) {
-        return loadImageLazy(imageUrl);
+        return loadImage(imageUrl); 
     }));
 }
 
