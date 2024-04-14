@@ -13,6 +13,14 @@ if (newsFeed) {
     });
 }
 
+// Функция для обновления общего количества лайков в localStorage
+function updateTotalLikes(count) {
+    let totalLikes = parseInt(localStorage.getItem('totalLikes')) || 0;
+    totalLikes += count; // Используйте переданное количество, а не просто увеличивайте на 1
+    localStorage.setItem('totalLikes', totalLikes);
+}
+
+// Обработчик клика на кнопку лайка
 function updateLikeCount(button) {
     let count = parseInt(button.dataset.likes) || 0;
     count++;
@@ -21,14 +29,42 @@ function updateLikeCount(button) {
     likeCount.textContent = count;
 
     // Обновление общего количества лайков в localStorage
-    updateTotalLikes(count);
+    updateTotalLikes(1); // Увеличиваем на 1 при каждом новом лайке
+
+    // Показать общее количество лайков на странице
+    document.querySelector('.total-likes').textContent = parseInt(localStorage.getItem('totalLikes')) || 0;
 }
 
-function updateTotalLikes(count) {
-    let totalLikes = parseInt(localStorage.getItem('totalLikes')) || 0;
-    totalLikes += 1;
-    localStorage.setItem('totalLikes', totalLikes);
+// Функция для обновления общего количества лайков при загрузке страницы
+function updateTotalLikesOnLoad() {
+    const likeButtons = document.querySelectorAll('.like-button');
+    let totalLikes = 0;
+    likeButtons.forEach(button => {
+        const likes = parseInt(button.dataset.likes) || 0;
+        totalLikes += likes;
+    });
+    // Показать общее количество лайков на странице
+    document.querySelector('.total-likes').textContent = totalLikes;
 }
+
+// Добавляем обработчики событий
+window.addEventListener('load', function() {
+    // Обновляем общее количество лайков при загрузке страницы
+    updateTotalLikesOnLoad();
+
+    const newsFeed = document.querySelector('.news-feed');
+    if (newsFeed) {
+        newsFeed.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target.classList.contains('like-button') || target.closest('.like-button')) {
+                const button = target.closest('.like-button');
+                if (!button.dataset.likes) {
+                    updateLikeCount(button);
+                    saveLikesToLocalStorage(button);
+                }
+            }
+        });
+    }
 
 function getCookie(name) {
     const cookies = document.cookie.split(';');
