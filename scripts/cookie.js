@@ -1,34 +1,18 @@
-const newsFeed = document.querySelector('.news-feed');
-
-if (newsFeed) {
-    newsFeed.addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.classList.contains('like-button') || target.closest('.like-button')) {
-            const button = target.closest('.like-button');
-            if (!button.dataset.likes) {
-                updateLikeCount(button);
-                saveLikesToLocalStorage(button);
-            }
-        }
-    });
-}
-
-function updateLikeCount(button) {
-    let count = parseInt(button.dataset.likes) || 0;
-    count++;
-    button.dataset.likes = count;
-    const likeCount = button.querySelector('.like-count');
-    likeCount.textContent = count;
-}
-
-function saveLikesToLocalStorage(button) {
-    const buttonId = button.dataset.id;
-    let count = parseInt(button.dataset.likes) || 0;
-    count++;
-    localStorage.setItem(`likes_${buttonId}`, count);
-}
-
 window.addEventListener('load', function() {
+    const newsFeed = document.querySelector('.news-feed');
+    if (newsFeed) {
+        newsFeed.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target.classList.contains('like-button') || target.closest('.like-button')) {
+                const button = target.closest('.like-button');
+                if (!button.dataset.likes) {
+                    updateLikeCount(button);
+                    saveLikesToLocalStorage(button);
+                }
+            }
+        });
+    }
+
     if (!getCookie("cookieconsent")) {
         var consentBar = document.getElementById("cookie-consent-bar");
         if (consentBar) {
@@ -65,6 +49,7 @@ function updateTotalLikes() {
         }
     });
 }
+
 
 function setCookie(name, value, days) {
     var expires = "";
