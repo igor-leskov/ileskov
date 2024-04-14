@@ -108,10 +108,17 @@ function updateTotalLikes() {
     // Получаем id новости из data-id атрибута кнопки
     const newsId = button.getAttribute('data-id');
     
-    // Получаем количество лайков для данной новости
-    const likeCount = parseInt(button.querySelector('.like-count').textContent);
+    // Получаем количество лайков для данной новости из локального хранилища
+    let likeCount = localStorage.getItem(`likes_${newsId}`);
     
-    // Обновляем общее количество лайков для данной новости
+    // Если в локальном хранилище нет информации о количестве лайков для данной новости, устанавливаем значение по умолчанию (0)
+    if (likeCount === null) {
+      likeCount = 0;
+    } else {
+      likeCount = parseInt(likeCount);
+    }
+    
+    // Обновляем текст общего количества лайков для данной новости
     button.querySelector('.total-likes-news').textContent = `общее количество ${likeCount}`;
   });
 }
@@ -131,11 +138,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Увеличиваем счетчик лайков для данной новости
-      const likeCountSpan = button.querySelector('.like-count');
-      let likeCount = parseInt(likeCountSpan.textContent);
+      // Увеличиваем счетчик лайков для данной новости в локальном хранилище
+      let likeCount = localStorage.getItem(`likes_${newsId}`);
+      if (likeCount === null) {
+        likeCount = 0;
+      } else {
+        likeCount = parseInt(likeCount);
+      }
       likeCount++;
-      likeCountSpan.textContent = likeCount;
+      localStorage.setItem(`likes_${newsId}`, likeCount);
       
       // Запоминаем, что пользователь поставил лайк для этой новости
       localStorage.setItem(`liked_${newsId}`, true);
@@ -144,5 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
       updateTotalLikes();
     });
   });
+  
+  // После загрузки страницы обновляем общее количество лайков
+  updateTotalLikes();
 });
-
