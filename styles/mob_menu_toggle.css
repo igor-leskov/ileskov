@@ -15,23 +15,19 @@
 		#menu-toggle {
 			  display: block;
 	    }
-			   
-		
-		.language-switcher {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 10px; 
-            margin-left: -15px; 
-            background-color: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+	
+       .language-switcher {
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-        .language-link {
-            display: inline-block;
-            margin-left: -20px;
-        }
+.language-link {
+    display: inline-block;
+}
 
-        .language-link img {
-            vertical-align: middle;
-        }
+.language-link img {
+    vertical-align: middle;
+}
