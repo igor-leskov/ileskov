@@ -1,13 +1,36 @@
-window.onload = function() {
-    if (!getCookie("cookieconsent")) {
-        var consentBar = document.getElementById("cookie-consent-bar");
-        if (consentBar) {
-            consentBar.style.display = "block";
+const newsFeed = document.querySelector('.news-feed');
+
+if (newsFeed) {
+    newsFeed.addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.classList.contains('like-button') || target.closest('.like-button')) {
+            const button = target.closest('.like-button');
+            if (!button.dataset.likes) {
+                updateLikeCount(button);
+                saveLikesToCookie(button);
+            }
+        }
+    });
+}
+
+function updateLikeCount(button) {
+    let count = parseInt(button.dataset.likes) || 0;
+    count++;
+    button.dataset.likes = count;
+    const likeCount = button.querySelector('.like-count');
+    likeCount.textContent = count;
+}
+
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
         }
     }
-
-    fixCookieConsentBarPosition();
-};
+    return null;
+}
 
 function setCookie(name, value, days) {
     var expires = "";
@@ -19,33 +42,13 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+function saveLikesToCookie(button) {
+    const consentAccepted = getCookie("cookieconsent"); 
+    if (consentAccepted) { 
+        const buttonId = button.dataset.id;
+        const count = button.dataset.likes || 0;
+        document.cookie = `likes_${buttonId}=${count}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
     }
-    return null;
-}
-
-function acceptCookies() {
-    setCookie("cookieconsent", "accepted", 30);
-    var consentBar = document.getElementById("cookie-consent-bar");
-    if (consentBar) {
-        consentBar.style.display = "none"; 
-    }
-}
-
-function redirectToPrivacyPolicyRu() {
-    var policyPage = "privacy_policy.html";
-    window.location.href = policyPage;
-}
-
-function redirectToPrivacyPolicyEt() {
-    var policyPage = "privacy_policy_et.html"; 
-    window.location.href = policyPage;
 }
 
 function fixCookieConsentBarPosition() {
@@ -54,3 +57,25 @@ function fixCookieConsentBarPosition() {
         consentBar.style.position = "fixed";
     }
 }
+
+window.addEventListener('load', function() {
+    
+    if (!getCookie("cookieconsent")) {
+        var consentBar = document.getElementById("cookie-consent-bar");
+        if (consentBar) {
+            consentBar.style.display = "block";
+        }
+    }
+
+    fixCookieConsentBarPosition();
+
+    const likeButtons = document.querySelectorAll('.like-button');
+    likeButtons.forEach(button => {
+        const buttonId = button.dataset.id;
+        const likesCookie = getCookie(`likes_${buttonId}`);
+        if (likesCookie) {
+            button.dataset.likes = likesCookie;
+            button.querySelector('.like-count').textContent = likesCookie;
+        }
+    });
+});
