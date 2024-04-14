@@ -1,52 +1,54 @@
 .gallery {
-           display: flex;
-           flex-wrap: wrap;
-           gap: 20px;
-        }
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   justify-content: center; /* Центрирование элементов в галерее */
+}
 
-        .gallery-item {
-           flex: 0 0 calc(50% - 20px);
-           animation: fadeInGallery 1s ease; 
-        }
-		
-		.gallery-item img:hover {
-           transform: scale(0.9);
-        }
+.gallery-item {
+   flex: 0 0 calc(50% - 10px);
+   animation: fadeInGallery 1s ease;
+   margin-bottom: 10px; /* Добавление отступа между элементами */
+}
 
-        @media screen and (max-width: 768px) {
-        .gallery-item {
-           flex: 0 0 calc(50% - 20px);
-        }
-    }
+.gallery-item img:hover {
+   transform: scale(0.9);
+}
 
-        @keyframes fadeInGallery {
-           from {
-           opacity: 0;
-           transform: translateY(-20px);
-        }
-           to {
-           opacity: 1;
-           transform: translateY(0);
-        }
-    }
+@media screen and (max-width: 768px) {
+   .gallery-item {
+      flex: 0 0 calc(100% - 20px); /* Элементы галереи на мобильных устройствах должны занимать всю ширину */
+   }
+}
 
-        .gallery-item img {
-           width: 345px;
-           height: 200px;
-           transition: transform 0.3s ease;
-           border-radius: 5px;
-        }
+@keyframes fadeInGallery {
+   from {
+      opacity: 0;
+      transform: translateY(-20px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
-        form textarea {
-           width: calc(100% - 20px);
-           height: 100px;
-        }
-        
-        form button {
-           width: calc(100% - 40px);
-           background-color: #333;
-           color: #fff;
-           padding: 10px 0;
-           border: none;
-           cursor: pointer;
-        }
+.gallery-item img {
+   width: 100%; /* Изображения в галерее на мобильных устройствах должны занимать всю доступную ширину */
+   height: auto; /* Автоматическое вычисление высоты для сохранения пропорций */
+   border-radius: 5px;
+}
+
+form textarea {
+   width: calc(100% - 20px);
+   height: 100px;
+   margin-bottom: 10px; /* Добавление отступа между textarea и кнопкой */
+}
+
+form button {
+   width: calc(100% - 20px);
+   background-color: #333;
+   color: #fff;
+   padding: 10px 0;
+   border: none;
+   cursor: pointer;
+}
