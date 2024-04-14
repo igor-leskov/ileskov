@@ -31,3 +31,10 @@
         .gallery-item img:hover {
            transform: scale(0.9);
         }
+
+        @media screen and (max-width: 576px) {
+        .gallery-item {
+           flex: 0 0 calc(100% - 20px);
+        }
+    }
+
