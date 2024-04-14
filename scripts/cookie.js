@@ -98,3 +98,39 @@ window.addEventListener('load', function() {
     });
 });
 
+// Функция для сохранения и отображения общего количества лайков
+function updateTotalLikes() {
+  // Получаем все кнопки лайков
+  const likeButtons = document.querySelectorAll('.like-button');
+  
+  // Для каждой кнопки лайка
+  likeButtons.forEach(button => {
+    // Получаем id новости из data-id атрибута кнопки
+    const newsId = button.getAttribute('data-id');
+    
+    // Получаем количество лайков для данной новости
+    const likeCount = parseInt(button.querySelector('.like-count').textContent);
+    
+    // Обновляем общее количество лайков для данной новости
+    button.querySelector('.total-likes-news').textContent = `общее количество ${likeCount}`;
+  });
+}
+
+// Пример обработчика события для кнопки лайка
+document.addEventListener('DOMContentLoaded', function() {
+  const likeButtons = document.querySelectorAll('.like-button');
+  likeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Увеличиваем счетчик лайков для данной новости
+      const likeCountSpan = button.querySelector('.like-count');
+      let likeCount = parseInt(likeCountSpan.textContent);
+      likeCount++;
+      likeCountSpan.textContent = likeCount;
+      
+      // Вызываем функцию для обновления общего количества лайков
+      updateTotalLikes();
+    });
+  });
+});
+
+
