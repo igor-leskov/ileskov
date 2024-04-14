@@ -13,16 +13,16 @@
 }
 
 .language-switcher {
-    display: block;
-    margin: 10px auto;
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    margin: 10px auto; /* Уменьшаем отступы и центрируем по горизонтали */
     padding: 5px 10px;
     border-radius: 5px;
-    text-align: center;
+    background-color: #333; /* Добавляем фон для ясности */
 }
 
 .language-link {
-    display: inline-block;
-    margin: 5px;
+    margin: 0 5px; /* Уменьшаем отступы между ссылками */
 }
 
 .language-link img {
