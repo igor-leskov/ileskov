@@ -49,8 +49,8 @@ function getCookie(name) {
 }
 
 function saveLikesToCookie(button) {
-    const consentAccepted = getCookie("cookieconsent"); // Check if cookie consent is accepted
-    if (consentAccepted) { // Only save likes to cookies if consent is accepted
+    const consentAccepted = getCookie("cookieconsent"); 
+    if (consentAccepted) { 
         const buttonId = button.dataset.id;
         const count = button.dataset.likes || 0;
         document.cookie = `likes_${buttonId}=${count}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
