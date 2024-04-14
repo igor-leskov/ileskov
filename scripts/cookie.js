@@ -116,21 +116,33 @@ function updateTotalLikes() {
   });
 }
 
-// Пример обработчика события для кнопки лайка
+// Обработчик события для кнопки лайка
 document.addEventListener('DOMContentLoaded', function() {
   const likeButtons = document.querySelectorAll('.like-button');
   likeButtons.forEach(button => {
     button.addEventListener('click', function() {
+      // Получаем id новости
+      const newsId = button.getAttribute('data-id');
+      
+      // Проверяем, есть ли уже лайк от данного пользователя для этой новости
+      const hasLiked = localStorage.getItem(`liked_${newsId}`);
+      if (hasLiked) {
+        // Если пользователь уже поставил лайк, то выходим из функции
+        return;
+      }
+      
       // Увеличиваем счетчик лайков для данной новости
       const likeCountSpan = button.querySelector('.like-count');
       let likeCount = parseInt(likeCountSpan.textContent);
       likeCount++;
       likeCountSpan.textContent = likeCount;
       
+      // Запоминаем, что пользователь поставил лайк для этой новости
+      localStorage.setItem(`liked_${newsId}`, true);
+      
       // Вызываем функцию для обновления общего количества лайков
       updateTotalLikes();
     });
   });
 });
-
 
