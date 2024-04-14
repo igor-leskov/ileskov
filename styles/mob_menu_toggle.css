@@ -1,10 +1,10 @@
 #menu-toggle {
-    font-size: 20px; /* Уменьшаем размер кнопки-триггера */
+    font-size: 20px;
     background: none;
     border: none;
     cursor: pointer;
     color: #fff;
-    margin-right: 10px; /* Добавляем небольшой отступ справа */
+    margin-right: 10px;
     transition: transform 0.3s ease;
 }
 
@@ -13,17 +13,16 @@
 }
 
 .language-switcher {
-    display: block; /* Изменяем на блочный элемент для правильного размещения на мобильных устройствах */
-    margin: 10px auto; /* Центрируем переключатель по горизонтали и добавляем отступы */
-    background-color: #333;
+    display: block;
+    margin: 10px auto;
     padding: 5px 10px;
     border-radius: 5px;
-    text-align: center; /* Центрируем текст внутри переключателя */
+    text-align: center;
 }
 
 .language-link {
     display: inline-block;
-    margin: 5px; /* Уменьшаем отступы между ссылками */
+    margin: 5px;
 }
 
 .language-link img {
