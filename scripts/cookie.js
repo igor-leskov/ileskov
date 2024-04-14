@@ -59,7 +59,10 @@ function updateTotalLikes() {
         } else {
             likeCount = parseInt(likeCount);
         }
-        button.querySelector('.total-likes-news').textContent = `общее количество ${likeCount}`;
+        const totalLikes = button.querySelector('.total-likes-news');
+        if (totalLikes) {
+            totalLikes.textContent = `Отметок нравится: ${likeCount}`;
+        }
     });
 }
 
