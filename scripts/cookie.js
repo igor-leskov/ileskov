@@ -51,11 +51,29 @@ function saveLikesToCookie(button) {
     }
 }
 
+function acceptCookies() {
+    setCookie("cookieconsent", "accepted", 30);
+    var consentBar = document.getElementById("cookie-consent-bar");
+    if (consentBar) {
+        consentBar.style.display = "none"; 
+    }
+}
+
 function fixCookieConsentBarPosition() {
     var consentBar = document.getElementById("cookie-consent-bar");
     if (consentBar) {
         consentBar.style.position = "fixed";
     }
+}
+
+function redirectToPrivacyPolicyRu() {
+    var policyPage = "privacy_policy.html";
+    window.location.href = policyPage;
+}
+
+function redirectToPrivacyPolicyEt() {
+    var policyPage = "privacy_policy_et.html"; 
+    window.location.href = policyPage;
 }
 
 window.addEventListener('load', function() {
