@@ -1,18 +1,3 @@
-const newsFeed = document.querySelector('.news-feed');
-
-if (newsFeed) {
-    newsFeed.addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.classList.contains('like-button') || target.closest('.like-button')) {
-            const button = target.closest('.like-button');
-            if (!button.dataset.likes) {
-                updateLikeCount(button);
-                saveLikesToLocalStorage(button);
-            }
-        }
-    });
-}
-
 // Функция для обновления общего количества лайков в localStorage
 function updateTotalLikes(count) {
     let totalLikes = parseInt(localStorage.getItem('totalLikes')) || 0;
@@ -66,6 +51,46 @@ window.addEventListener('load', function() {
         });
     }
 
+    // Показать панель cookie, если пользователь еще не согласился
+    if (!getCookie("cookieconsent")) {
+        var consentBar = document.getElementById("cookie-consent-bar");
+        if (consentBar) {
+            consentBar.style.display = "block";
+        }
+    }
+
+    fixCookieConsentBarPosition();
+
+    // Обработчик клика на кнопку согласия с использованием файлов cookie
+    const acceptButton = document.getElementById("accept-cookies-button");
+    if (acceptButton) {
+        acceptButton.addEventListener("click", function() {
+            // Сохраняем согласие пользователя в cookie
+            acceptCookies();
+            // Скрываем панель cookie
+            var consentBar = document.getElementById("cookie-consent-bar");
+            if (consentBar) {
+                consentBar.style.display = "none";
+            }
+        });
+    }
+
+    const likeButtons = document.querySelectorAll('.like-button');
+    likeButtons.forEach(button => {
+        const buttonId = button.dataset.id;
+        const likesLocalStorage = localStorage.getItem(`likes_${buttonId}`);
+        if (likesLocalStorage) {
+            button.dataset.likes = likesLocalStorage;
+            button.querySelector('.like-count').textContent = likesLocalStorage;
+        }
+    });
+
+    // Обновление общего количества лайков при загрузке страницы
+    const totalLikes = parseInt(localStorage.getItem('totalLikes')) || 0;
+    // Показать общее количество лайков на странице
+    document.querySelector('.total-likes').textContent = totalLikes;
+});
+
 function getCookie(name) {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
@@ -98,10 +123,6 @@ function saveLikesToLocalStorage(button) {
 
 function acceptCookies() {
     setCookie("cookieconsent", "accepted", 30);
-    var consentBar = document.getElementById("cookie-consent-bar");
-    if (consentBar) {
-        consentBar.style.display = "none";
-    }
 }
 
 function fixCookieConsentBarPosition() {
@@ -110,41 +131,3 @@ function fixCookieConsentBarPosition() {
         consentBar.style.position = "fixed";
     }
 }
-
-function redirectToPrivacyPolicyRu() {
-    var policyPage = "privacy_policy.html";
-    window.location.href = policyPage;
-}
-
-function redirectToPrivacyPolicyEt() {
-    var policyPage = "privacy_policy_et.html";
-    window.location.href = policyPage;
-}
-
-window.addEventListener('load', function() {
-
-    if (!getCookie("cookieconsent")) {
-        var consentBar = document.getElementById("cookie-consent-bar");
-        if (consentBar) {
-            consentBar.style.display = "block";
-        }
-    }
-
-    fixCookieConsentBarPosition();
-
-    const likeButtons = document.querySelectorAll('.like-button');
-    likeButtons.forEach(button => {
-        const buttonId = button.dataset.id;
-        const likesLocalStorage = localStorage.getItem(`likes_${buttonId}`);
-        if (likesLocalStorage) {
-            button.dataset.likes = likesLocalStorage;
-            button.querySelector('.like-count').textContent = likesLocalStorage;
-        }
-    });
-
-    // Обновление общего количества лайков при загрузке страницы
-    const totalLikes = parseInt(localStorage.getItem('totalLikes')) || 0;
-    // Показать общее количество лайков на странице
-    document.querySelector('.total-likes').textContent = totalLikes;
-});
-
