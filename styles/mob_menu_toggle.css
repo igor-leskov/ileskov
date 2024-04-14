@@ -1,27 +1,24 @@
 #menu-toggle {
-              font-size: 24px;
-              background: none;
-              border: none;
-              cursor: pointer;
-              color: #fff;
-              margin-right: 0px;
-			  transition: transform 0.3s ease; 
-        }
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 0px;
+    transition: transform 0.3s ease;
+    text-align: center; /* Добавляем центрирование текста */
+}
 
-        #menu-toggle:hover {
-              transform: scale(0.9); 
-        }
-		
-		#menu-toggle {
-			  display: block;
-	    }
+#menu-toggle:hover {
+    transform: scale(0.9);
+}
 	
-       .language-switcher {
+.language-switcher {
     display: block;
     margin: 0 auto;
     background-color: #333;
     padding: 5px 10px;
-    border-radius: 5px;
 }
 
 .language-link {
