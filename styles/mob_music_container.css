@@ -16,10 +16,14 @@
         }
 
        .music-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: 150px;
+    height: 150px; /* Убедитесь, что установлена высота */
+    overflow: hidden;
     transition: transform 0.3s ease;
-    overflow: hidden; /* Добавляем это свойство */
 }
 
 .music-cover:hover {
@@ -35,19 +39,12 @@
 
         .play-button {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0; /* Иконка создается через CSS, текст не нужен */
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     border: none;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
