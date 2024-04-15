@@ -9,7 +9,7 @@
 
         #news {
           position: relative;
-        }
+        } 
 
         .news-feed::-webkit-scrollbar {
           height: 10px;
