@@ -35,17 +35,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 18px; /* Уменьшение размера */
-    width: 40px; /* Уменьшение размера */
-    height: 40px; /* Уменьшение размера */
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 60px; /* Увеличим размер кнопки */
+    height: 60px; /* Увеличим размер кнопки */
     border: none;
     cursor: pointer;
+    background-color: transparent; /* Прозрачный фон */
+    padding: 0; /* Убираем внутренние отступы */
 }
 
-.play-button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+.play-button::before {
+    content: ''; /* Создаем псевдоэлемент для отображения треугольника */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%) rotate(90deg); /* Поворачиваем треугольник на 90 градусов */
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent; /* Размеры треугольника */
+    border-bottom: 16px solid transparent; /* Размеры треугольника */
+    border-left: 24px solid #fff; /* Размеры треугольника и цвет */
+}
+
+.play-button:hover::before {
+    border-left-color: #ccc; /* Изменяем цвет треугольника при наведении */
 }
 
 .music-info {
