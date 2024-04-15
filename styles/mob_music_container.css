@@ -1,31 +1,18 @@
 .music-container {
-    display: block; /* Изменено с flex на block */
+    display: flex;
+    overflow-x: auto;
     padding-bottom: 20px;
-    overflow-y: auto; /* Изменено с overflow-x на overflow-y */
-}
-
-.music-container::-webkit-scrollbar {
-    height: 6px; /* Изменение размера скроллбара */
-}
-
-.music-container::-webkit-scrollbar-track {
-    background: #f0f0f0;
-}
-
-.music-container::-webkit-scrollbar-thumb {
-    background: #5d5d5d;
-}
-
-.music-container::-webkit-scrollbar-thumb:hover {
-    background: #8d8d8d;
+    -webkit-overflow-scrolling: touch; /* Добавлено для плавной прокрутки на устройствах с iOS */
 }
 
 .music-item {
-    margin-bottom: 20px; /* Изменено на margin-bottom для лучшего разделения элементов */
+    margin-right: 20px;
+    flex-shrink: 0; /* Элементы списка не будут уменьшаться по мере уменьшения экрана */
 }
 
 .music-cover {
     width: 150px; /* Уменьшение размера */
+    height: auto; /* Высота будет автоматически рассчитываться */
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -36,7 +23,7 @@
 
 .music-cover img {
     width: 100%;
-    height: auto;
+    height: 100%; /* Заполнение родительского контейнера */
     border-radius: 10px;
 }
 
@@ -98,3 +85,4 @@
     text-align: center;
     margin-top: 10px;
 }
+
