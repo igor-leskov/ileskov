@@ -32,10 +32,7 @@
 }
 
 .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* Изменено на relative */
     width: 40px; /* Уменьшим размер кнопки */
     height: 40px; /* Уменьшим размер кнопки */
     border: none;
@@ -79,8 +76,6 @@
     width: 6px; /* Размер иконки паузы */
     height: 20px; /* Размер иконки паузы */
 }
-
-
 
 .music-info {
     text-align: center;
