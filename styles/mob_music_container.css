@@ -21,7 +21,7 @@
                align-items: center;
                position: relative;
                width: 150px;
-               height: 150px; /* Убедитесь, что установлена высота */
+               height: 150px;
                overflow: hidden;
                transition: transform 0.3s ease;
         }
