@@ -1,118 +1,126 @@
-.music-container {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch; /* Добавляем плавную прокрутку на iOS */
-}
-
-.music-container::-webkit-scrollbar {
-    display: none; /* Скрыть скроллбар на WebKit браузерах */
-}
-
-.music-item {
-    margin-right: 20px;
-    flex: 0 0 auto; /* Отменяем увеличение ширины элемента */
-}
-
-.music-cover {
-    position: relative; /* Добавляем позиционирование */
-    width: 150px; /* Уменьшение размера */
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.music-cover:hover {
-    transform: scale(0.9);
-}
-
-.music-cover img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.play-button {
-    position: relative; /* Изменено на relative */
-    width: 40px; /* Уменьшим размер кнопки */
-    height: 40px; /* Уменьшим размер кнопки */
-    border: none;
-    cursor: pointer;
-    background-color: #fff; /* Изменяем цвет фона */
-    padding: 0; /* Убираем внутренние отступы */
-    border-radius: 50%; /* Делаем кнопку круглой */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем тень */
-}
-
-.play-button::before {
-    content: ''; /* Создаем псевдоэлемент для отображения треугольника */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-40%, -50%); /* Позиционируем треугольник */
-    width: 0;
-    height: 0;
-    border-left: 14px solid #333; /* Размеры треугольника и цвет */
-    border-top: 10px solid transparent; /* Размеры треугольника */
-    border-bottom: 10px solid transparent; /* Размеры треугольника */
-}
-
-.play-button:hover::before {
-    border-left-color: #555; /* Изменяем цвет треугольника при наведении */
-}
-
-.play-button::after {
-    content: ''; /* Создаем псевдоэлемент для отображения паузы */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px; /* Размер иконки паузы */
-    height: 20px; /* Размер иконки паузы */
-    background-color: #333; /* Цвет иконки паузы */
-    transition: width 0.2s, height 0.2s; /* Плавное изменение размеров */
-}
-
-.play-button.playing::after {
-    width: 6px; /* Размер иконки паузы */
-    height: 20px; /* Размер иконки паузы */
-}
-
-.music-info {
-    text-align: center;
-}
-
-.seek-bar {
-    width: 100%;
-    height: 3px; /* Уменьшение высоты */
-    -webkit-appearance: none;
-    appearance: none;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-}
-
-.seek-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    background: #ddd;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.seek-bar::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.playing {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
 .image-description {
-    text-align: center;
-    margin-top: 10px;
-}
+               font-size: 12px; 
+	           text-align: center; 
+               margin-top: 10px; 
+        }
+
+        .music-container {
+               display: flex;
+               overflow-x: auto; 
+               padding-bottom: 20px; 
+        }
+
+        .music-item {
+               margin-right: 10px; 
+               flex-shrink: 0; 
+        }
+
+        .music-cover {
+               position: relative;
+               width: 150px; 
+               transition: transform 0.3s ease;
+        }
+		
+		.music-cover:hover {
+           transform: scale(0.9);
+        }
+
+        .music-cover img {
+               width: 100%;
+               height: 100%;
+               border-radius: 8px; 
+        }
+
+        .play-button {
+               position: absolute;
+               top: 50%; 
+               left: 50%; 
+               transform: translate(-50%, -50%); 
+               font-size: 24px;
+               width: 50px; 
+               height: 50px; 
+               border-radius: 50%; 
+               background-color: rgba(255, 255, 255, 0.8);
+               border: none;
+               cursor: pointer;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+        }
+
+        @media only screen and (max-width: 590px) {
+        .play-button {
+               font-size: 16px;
+               width: 40px;
+               height: 40px;
+        }
+    }
+
+        .music-info {
+               text-align: center;
+        }
+
+        .seek-bar {
+               width: 100%;
+               height: 5px;
+               -webkit-appearance: none;
+               appearance: none;
+               background: #ddd;
+               border-radius: 5px;
+               outline: none;
+        }
+
+        .seek-bar::-webkit-slider-thumb {
+               -webkit-appearance: none;
+               appearance: none;
+               width: 10px; 
+               height: 10px; 
+               background: #ddd;
+               border-radius: 50%;
+               cursor: pointer;
+        }
+
+        .seek-bar::-moz-range-thumb {
+               width: 10px; 
+               height: 10px; 
+               background: #ddd;
+               border-radius: 50%;
+               cursor: pointer;
+        }
+
+        .playing {
+               background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .music-info {
+               text-align: center;
+               margin-top: 25px; 
+        }
+
+        .music-title {
+               font-size: 11px; 
+               margin-top: 25px; 
+        }
+
+        @media screen and (max-width: 768px) {
+        .music-title {
+               font-size: 11px;
+        }
+    }
+	
+        .music-container::-webkit-scrollbar {
+               height: 10px;
+			   display: none;
+        }
+
+        .music-container::-webkit-scrollbar-track {
+               background: #f0f0f0;
+        }
+
+        .music-container::-webkit-scrollbar-thumb {
+               background: #5d5d5d;
+        }
+
+        .music-container::-webkit-scrollbar-thumb:hover {
+               background: #8d8d8d;
+        }
