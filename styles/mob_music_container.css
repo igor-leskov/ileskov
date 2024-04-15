@@ -1,103 +1,100 @@
 .music-container {
-           display: flex;
-           overflow-x: auto; 
-           padding-bottom: 20px; 
-        }
-		
-		.music-container::-webkit-scrollbar {
-               height: 10px;
-			   display: none;
-        }
+    display: block; /* Изменено с flex на block */
+    padding-bottom: 20px;
+    overflow-y: auto; /* Изменено с overflow-x на overflow-y */
+}
 
-        .music-container::-webkit-scrollbar-track {
-               background: #f0f0f0;
-        }
+.music-container::-webkit-scrollbar {
+    height: 6px; /* Изменение размера скроллбара */
+}
 
-        .music-container::-webkit-scrollbar-thumb {
-               background: #5d5d5d;
-        }
+.music-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
 
-        .music-container::-webkit-scrollbar-thumb:hover {
-               background: #8d8d8d;
-        }
+.music-container::-webkit-scrollbar-thumb {
+    background: #5d5d5d;
+}
 
-        .music-item {
-           margin-right: 20px;
-        }
+.music-container::-webkit-scrollbar-thumb:hover {
+    background: #8d8d8d;
+}
 
-        .music-cover {
-           position: relative;
-           width: 250px; 
-		   overflow: hidden; 
-           transition: transform 0.3s ease;
-		   
-        }
-		
-		.music-cover:hover {
-           transform: scale(0.9);
-        }
+.music-item {
+    margin-bottom: 20px; /* Изменено на margin-bottom для лучшего разделения элементов */
+}
 
-        .music-cover img {
-           width: 100%;
-           height: auto;
-           border-radius: 10px; 
-        }
+.music-cover {
+    width: 150px; /* Уменьшение размера */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
 
-        .play-button {
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%);
-           font-size: 24px;
-           width: 50px;
-           height: 50px;
-           border-radius: 50%;
-           background-color: rgba(255, 255, 255, 0.8);
-           border: none;
-           cursor: pointer;
-        }
+.music-cover:hover {
+    transform: scale(0.9);
+}
 
-        .play-button:hover {
-           background-color: rgba(255, 255, 255, 0.9);
-        }
+.music-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
-        .music-info {
-           text-align: center;
-        }
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px; /* Уменьшение размера */
+    width: 40px; /* Уменьшение размера */
+    height: 40px; /* Уменьшение размера */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+}
 
-        .seek-bar {
-           width: 100%;
-           height: 5px;
-           -webkit-appearance: none;
-           appearance: none;
-           background: #ddd;
-           border-radius: 5px;
-           outline: none;
-        }
+.play-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
 
-        .seek-bar::-webkit-slider-thumb {
-           -webkit-appearance: none;
-           appearance: none;
-           width: 12px;
-           height: 12px;
-           background: #ddd;
-           border-radius: 50%;
-           cursor: pointer;
-        }
+.music-info {
+    text-align: center;
+}
 
-        .seek-bar::-moz-range-thumb {
-           width: 12px;
-           height: 12px;
-           background: #333;
-           border-radius: 50%;
-           cursor: pointer;
-        }
+.seek-bar {
+    width: 100%;
+    height: 3px; /* Уменьшение высоты */
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+}
 
-        .playing {
-           background-color: rgba(255, 255, 255, 0.8);
-        }
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
-        .image-description {
-            text-align: center; 
-            margin-top: 10px; 
-        }
+.seek-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.playing {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.image-description {
+    text-align: center;
+    margin-top: 10px;
+}
