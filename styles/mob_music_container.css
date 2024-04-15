@@ -32,33 +32,30 @@
 }
 
 .play-button {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+}
+
+.play-button::before {
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px; /* Увеличим размер кнопки */
-    height: 60px; /* Увеличим размер кнопки */
-    border: none;
-    cursor: pointer;
-    background-color: transparent; /* Прозрачный фон */
-    padding: 0; /* Убираем внутренние отступы */
-}
-
-.play-button::before {
-    content: ''; /* Создаем псевдоэлемент для отображения треугольника */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-35%, -50%) rotate(90deg); /* Поворачиваем треугольник на 90 градусов */
     width: 0;
     height: 0;
-    border-top: 16px solid transparent; /* Размеры треугольника */
-    border-bottom: 16px solid transparent; /* Размеры треугольника */
-    border-left: 24px solid #fff; /* Размеры треугольника и цвет */
+    border-style: solid;
+    border-width: 12px 0 12px 24px;
+    border-color: transparent transparent transparent #fff;
 }
 
 .play-button:hover::before {
-    border-left-color: #ccc; /* Изменяем цвет треугольника при наведении */
+    border-color: transparent transparent transparent #ccc;
 }
 
 .music-info {
