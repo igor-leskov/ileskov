@@ -63,6 +63,24 @@
     border-left-color: #555; /* Изменяем цвет треугольника при наведении */
 }
 
+.play-button::after {
+    content: ''; /* Создаем псевдоэлемент для отображения паузы */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; /* Размер иконки паузы */
+    height: 20px; /* Размер иконки паузы */
+    background-color: #333; /* Цвет иконки паузы */
+    transition: width 0.2s, height 0.2s; /* Плавное изменение размеров */
+}
+
+.play-button.playing::after {
+    width: 6px; /* Размер иконки паузы */
+    height: 20px; /* Размер иконки паузы */
+}
+
+
 
 .music-info {
     text-align: center;
