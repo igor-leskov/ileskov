@@ -62,32 +62,36 @@
         }
 
         .seek-bar {
-               width: 100%;
-               height: 5px;
-               -webkit-appearance: none;
-               appearance: none;
-               background: #ddd;
-               border-radius: 5px;
-               outline: none;
-        }
+    position: absolute;
+    width: calc(100% - 20px); /* 20px - примерный отступ от краев .music-cover */
+    left: 10px; /* Примерный отступ от краев .music-cover */
+    bottom: -15px; /* Отрицательное значение для сдвига seek-bar вниз относительно .music-cover */
+    height: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    z-index: 1; /* Установите z-index ниже, чем у .music-cover, чтобы ползунок был позади обложки */
+}
 
-        .seek-bar::-webkit-slider-thumb {
-               -webkit-appearance: none;
-               appearance: none;
-               width: 10px; 
-               height: 10px; 
-               background: #ddd;
-               border-radius: 50%;
-               cursor: pointer;
-        }
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
-        .seek-bar::-moz-range-thumb {
-               width: 10px; 
-               height: 10px; 
-               background: #ddd;
-               border-radius: 50%;
-               cursor: pointer;
-        }
+.seek-bar::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
         .playing {
                background-color: rgba(255, 255, 255, 0.8);
