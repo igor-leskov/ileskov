@@ -2,17 +2,20 @@
     display: flex;
     overflow-x: auto;
     padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch; /* Добавлено для плавной прокрутки на устройствах с iOS */
+    -webkit-overflow-scrolling: touch; /* Добавляем плавную прокрутку на iOS */
+}
+
+.music-container::-webkit-scrollbar {
+    display: none; /* Скрыть скроллбар на WebKit браузерах */
 }
 
 .music-item {
     margin-right: 20px;
-    flex-shrink: 0; /* Элементы списка не будут уменьшаться по мере уменьшения экрана */
+    flex: 0 0 auto; /* Отменяем увеличение ширины элемента */
 }
 
 .music-cover {
     width: 150px; /* Уменьшение размера */
-    height: auto; /* Высота будет автоматически рассчитываться */
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -23,7 +26,7 @@
 
 .music-cover img {
     width: 100%;
-    height: 100%; /* Заполнение родительского контейнера */
+    height: auto;
     border-radius: 10px;
 }
 
