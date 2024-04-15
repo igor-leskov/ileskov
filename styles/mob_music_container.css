@@ -32,31 +32,37 @@
 }
 
 .play-button {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    padding: 0;
-}
-
-.play-button::before {
-    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 40px; /* Уменьшим размер кнопки */
+    height: 40px; /* Уменьшим размер кнопки */
+    border: none;
+    cursor: pointer;
+    background-color: #fff; /* Изменяем цвет фона */
+    padding: 0; /* Убираем внутренние отступы */
+    border-radius: 50%; /* Делаем кнопку круглой */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+}
+
+.play-button::before {
+    content: ''; /* Создаем псевдоэлемент для отображения треугольника */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%); /* Позиционируем треугольник */
     width: 0;
     height: 0;
-    border-style: solid;
-    border-width: 12px 0 12px 24px;
-    border-color: transparent transparent transparent #fff;
+    border-left: 14px solid #333; /* Размеры треугольника и цвет */
+    border-top: 10px solid transparent; /* Размеры треугольника */
+    border-bottom: 10px solid transparent; /* Размеры треугольника */
 }
 
 .play-button:hover::before {
-    border-color: transparent transparent transparent #ccc;
+    border-left-color: #555; /* Изменяем цвет треугольника при наведении */
 }
+
 
 .music-info {
     text-align: center;
