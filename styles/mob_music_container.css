@@ -49,33 +49,6 @@
     transition: all 0.3s ease;
 }
 
-.play-button::before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 0 10px 17px;
-    border-color: transparent transparent transparent white;
-    margin: auto; /* Центрирование треугольника */
-}
-
-.play-button:hover {
-    background: linear-gradient(to right, #657deb, #c678dd);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-@media only screen and (max-width: 590px) {
-    .play-button {
-        font-size: 0;
-        width: 40px;
-        height: 40px;
-    }
-    .play-button::before {
-        border-width: 8px 0 8px 14px;
-    }
-}
-
         .music-info {
                text-align: center;
         }
