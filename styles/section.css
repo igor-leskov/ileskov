@@ -47,11 +47,11 @@
         animation: blink 1s infinite;
     }
 
-    .banner {
-        width: 100%;
+    .window {
         background-color: #f3f3f3;
-        text-align: center;
-        padding: 20px 0;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     a {
