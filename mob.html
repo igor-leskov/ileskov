@@ -178,11 +178,13 @@
       <div class="music-cover">
         <img src="images/Raditebja.webp" alt="Igor Leskov - Ради тебя" width="300" height="300" loading="auto">
         <input type="range" class="seek-bar" value="0" min="0" aria-label="Ползунок для перемотки аудиозаписи">
-        <button class="play-button" onclick="togglePlayPause()">
-    <img src="images/play-icon.webp" alt="Плей" width="50" height="50" class="play-icon">
-    <img src="images/pause-icon.webp" alt="Пауза" width="50" height="50" class="pause-icon" style="display: none;">
-  </button>
-      </div>
+        <button class="play-button" data-src="audio/Raditebja.mp3">
+      <img src="images/play-icon.webp" alt="Play" class="play-icon">
+      <img src="images/pause-icon.webp" alt="Pause" class="pause-icon" style="display: none;">
+    </button>
+  </div>
+  <input type="range" class="seek-bar">
+</div>
       <div class="music-info">
         <p class="music-title">Ради тебя</p>
 		<h3 class="blinking-text">ПОСЛЕДНИЙ РЕЛИЗ</h3>
