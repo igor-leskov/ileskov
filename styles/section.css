@@ -38,25 +38,50 @@
         }
 		
 		@keyframes blink {
-        0% { color: #ff0000; }
-        50% { color: #000; }
-        100% { color: #ff0000; }
-    }
+    0% { color: #ff0000; }
+    50% { color: #000; }
+    100% { color: #ff0000; }
+}
 
-    .blinking-text {
-        animation: blink 1s infinite;
-    }
+.blinking-text {
+    animation: blink 1s infinite;
+}
 
-    .window {
-        background-color: #f3f3f3;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+.window {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    a {
-        text-decoration: none;
-    }
+a {
+    text-decoration: none;
+}
+
+@-webkit-keyframes blink {
+    0% { color: #ff0000; }
+    50% { color: #000; }
+    100% { color: #ff0000; }
+}
+
+@-moz-keyframes blink {
+    0% { color: #ff0000; }
+    50% { color: #000; }
+    100% { color: #ff0000; }
+}
+
+@-o-keyframes blink {
+    0% { color: #ff0000; }
+    50% { color: #000; }
+    100% { color: #ff0000; }
+}
+
+@-ms-keyframes blink {
+    0% { color: #ff0000; }
+    50% { color: #000; }
+    100% { color: #ff0000; }
+}
+
 		
 		
 		
