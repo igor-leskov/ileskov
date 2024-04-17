@@ -12,10 +12,6 @@
         .section h2 {
            color: #000;
         }
-
-        .section a {
-	  color: #000;
-	}
 		
         .section:hover {
             background-color: #333; 
@@ -25,10 +21,6 @@
         .section:hover h2 {
             color: #fff;
         }
-
-        .section:hover a {
-            color: #fff;
-	}
 
         h2 {
             font-size: 24px;
