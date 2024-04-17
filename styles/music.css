@@ -1,4 +1,4 @@
- .music-container {
+        .music-container {
            display: flex;
            overflow-x: auto; 
            padding-bottom: 20px; 
@@ -41,11 +41,17 @@
 		   
         }
 		
-		.music-cover:hover {
+	.music-cover:hover {
            transform: scale(0.9);
         }
 
         .music-cover img {
+           width: 100%;
+           height: auto;
+           border-radius: 10px; 
+        }
+
+        .music-cover-1 img {
            width: 100%;
            height: auto;
            border-radius: 10px; 
