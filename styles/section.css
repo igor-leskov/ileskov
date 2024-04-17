@@ -10,17 +10,17 @@
         }
 
         .section h2, .section a {
-           color: #000;
+           color: inherit; /* Убедитесь, что цвет наследуется */
         }
+
 
         .section:hover {
             background-color: #333; 
             color: #fff; 
         }
 
-        .section:hover a { 
-           transition: color 0.3s ease; 
-	   color: #000;
+        .section:hover h2, .section:hover a {
+            color: #000 !important; /* Используем !important для переопределения инлайновых стилей */
         }
 
         h2 {
