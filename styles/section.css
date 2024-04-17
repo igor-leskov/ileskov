@@ -39,7 +39,7 @@
 		
         @keyframes blink {
             0% { color: #ff0000; }
-            50% { color: #fff; }
+            50% { color: #212121; }
             100% { color: #ff0000; }
         }
 
@@ -49,12 +49,12 @@
 
         .window {
             background-color: #8d8d8d;
-            border-radius: 5px;
+            border-radius: 0;
             padding: 0;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	    position: relative; /* Добавляем позиционирование */
-            top: 0; /* Устанавливаем начальное положение от верхнего края */
-            cursor: move; /* Добавляем курсор перемещения */
+	    position: relative; 
+            top: -320px; 
+            cursor: move;
         }
 
         a {
