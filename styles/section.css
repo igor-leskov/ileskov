@@ -9,8 +9,8 @@
 		   
         }
 
-        .section h2 {
-            color: #000; 
+        .section h2, .section a {
+           color: #000;
         }
 
         .section:hover {
