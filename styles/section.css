@@ -19,8 +19,9 @@
         }
 
         .section a, .section:hover a {
-           color: inherit; /* Делает цвет ссылок наследуемым от родительского элемента */
-           transition: color 0.3s ease; /* Добавляем плавность изменения цвета */
+           color: inherit; 
+           transition: color 0.3s ease; 
+	   color: #000;
         }
 
         h2 {
