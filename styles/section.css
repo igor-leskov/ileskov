@@ -52,19 +52,20 @@
             border-radius: 5px;
             padding: 0;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	    position: relative; /* Добавляем позиционирование */
+            top: 0; /* Устанавливаем начальное положение от верхнего края */
+            cursor: move; /* Добавляем курсор перемещения */
         }
 
         a {
             text-decoration: none;
         }
 
-        /* Стиль для ссылок внутри секции */
-.section a {
-    color: #000; /* черный текст ссылки */
-    text-decoration: underline;
-}
+        .section a {
+            color: #000;
+            text-decoration: underline;
+        }
 
-/* Стиль для ссылок внутри секции при наведении */
-.section:hover a {
-    color: #fff; /* белый текст ссылки при наведении */
-}
+        .section:hover a {
+             color: #fff; 
+        }
