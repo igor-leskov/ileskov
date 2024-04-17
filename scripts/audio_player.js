@@ -7,8 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
         var audioPlayer = new Audio(audioSrc);
         var seekBar = item.querySelector(".seek-bar");
 
-        playButton.addEventListener("click", function() {
+        // Загрузка времени проигрывания из localStorage
+        var storedTime = localStorage.getItem("audioTime" + index);
+        if (storedTime) {
+            audioPlayer.currentTime = parseFloat(storedTime);
+        }
 
+        playButton.addEventListener("click", function() {
             if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
                 currentAudioPlayer.pause();
                 var playButtonPrev = document.querySelector(".playing");
@@ -41,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         audioPlayer.addEventListener("timeupdate", function() {
             seekBar.value = audioPlayer.currentTime;
+            // Сохранение времени проигрывания в localStorage
+            localStorage.setItem("audioTime" + index, audioPlayer.currentTime);
         });
 
         seekBar.addEventListener("change", function() {
