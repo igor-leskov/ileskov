@@ -1,4 +1,4 @@
-        .section {
+.section {
            margin-bottom: 40px;
            background-color: #fff;
            color: #000;
@@ -10,9 +10,8 @@
         }
 
         .section h2, .section a {
-           color: inherit; /* Убедитесь, что цвет наследуется */
+           color: #000;
         }
-
 
         .section:hover {
             background-color: #333; 
@@ -20,7 +19,7 @@
         }
 
         .section:hover h2, .section:hover a {
-            color: #000 !important; /* Используем !important для переопределения инлайновых стилей */
+            color: #fff;
         }
 
         h2 {
@@ -58,4 +57,3 @@
         a {
             text-decoration: none;
         }
-
