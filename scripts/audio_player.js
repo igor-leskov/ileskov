@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var musicItems = document.querySelectorAll(".music-item");
+    var lastPlayedIndex = localStorage.getItem("lastPlayedIndex");
 
     musicItems.forEach(function(item, index) {
         var playButton = item.querySelector(".play-button");
@@ -41,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if (index < musicItems.length - 1) {
                 var nextButton = musicItems[index + 1].querySelector(".play-button");
                 nextButton.click();
+            } else {
+                // Сохранение индекса последнего проигранного аудио в localStorage
+                localStorage.setItem("lastPlayedIndex", index);
             }
         });
 
@@ -53,6 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
         seekBar.addEventListener("change", function() {
             audioPlayer.currentTime = seekBar.value;
         });
+
+        // Автоплей последнего проигранного аудио
+        if (index == lastPlayedIndex) {
+            audioPlayer.play();
+            playButton.innerHTML = "&#10074;&#10074;";
+            playButton.classList.add("playing");
+            currentAudioPlayer = audioPlayer;
+        }
     });
 });
 
