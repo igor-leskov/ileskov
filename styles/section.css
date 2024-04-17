@@ -18,8 +18,9 @@
             color: #fff; 
         }
 
-        .section:hover h2, .section:hover a {
-            color: #fff;
+        .section a, .section:hover a {
+           color: inherit; /* Делает цвет ссылок наследуемым от родительского элемента */
+           transition: color 0.3s ease; /* Добавляем плавность изменения цвета */
         }
 
         h2 {
