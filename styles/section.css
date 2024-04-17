@@ -39,7 +39,7 @@
 		
         @keyframes blink {
             0% { color: #ff0000; }
-            50% { color: #000; }
+            50% { color: #fff; }
             100% { color: #ff0000; }
         }
 
