@@ -58,3 +58,7 @@
             text-decoration: none;
         }
 
+        .section:hover a { /* Consistent hover effect for text inside h2 and links */
+            color: #fff;
+        }
+
