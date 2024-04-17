@@ -21,6 +21,13 @@
     transition: transform 0.3s ease;
 }
 
+.music-cover-1 {
+    position: relative;
+    width: 150px; 
+    transition: transform 0.3s ease;
+		   
+}
+
 .music-cover:hover {
     transform: scale(0.9);
 }
