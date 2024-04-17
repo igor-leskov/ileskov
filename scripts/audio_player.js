@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var audioPlayer = new Audio(audioSrc);
         var seekBar = item.querySelector(".seek-bar");
 
-        // Загрузка времени проигрывания из localStorage
         var storedTime = localStorage.getItem("audioTime" + index);
         if (storedTime) {
             audioPlayer.currentTime = parseFloat(storedTime);
@@ -43,29 +42,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 var nextButton = musicItems[index + 1].querySelector(".play-button");
                 nextButton.click();
             } else {
-                // Сохранение индекса последнего проигранного аудио в localStorage
+                
                 localStorage.setItem("lastPlayedIndex", index);
             }
         });
 
         audioPlayer.addEventListener("timeupdate", function() {
             seekBar.value = audioPlayer.currentTime;
-            // Сохранение времени проигрывания в localStorage
+            
             localStorage.setItem("audioTime" + index, audioPlayer.currentTime);
         });
 
         seekBar.addEventListener("change", function() {
             audioPlayer.currentTime = seekBar.value;
         });
-
-        // Автоплей последнего проигранного аудио
-        if (index == lastPlayedIndex) {
-            audioPlayer.play();
-            playButton.innerHTML = "&#10074;&#10074;";
-            playButton.classList.add("playing");
-            currentAudioPlayer = audioPlayer;
-        }
-    });
-});
 
 var currentAudioPlayer = null;
