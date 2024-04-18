@@ -35,12 +35,12 @@ function fixCookieConsentBarPosition() {
 }
 
 function redirectToPrivacyPolicyRu() {
-    var policyPage = "privacy_policy.html";
+    var policyPage = "mob_privacy_policy.html";
     window.location.href = policyPage;
 }
 
 function redirectToPrivacyPolicyEt() {
-    var policyPage = "privacy_policy_et.html"; 
+    var policyPage = "mob_privacy_policy_et.html"; 
     window.location.href = policyPage;
 }
 
