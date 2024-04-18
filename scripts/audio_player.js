@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var musicItems = document.querySelectorAll(".music-item");
+    var lastPlayedIndex = localStorage.getItem("lastPlayedIndex");
 
     musicItems.forEach(function(item, index) {
         var playButton = item.querySelector(".play-button");
@@ -7,8 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
         var audioPlayer = new Audio(audioSrc);
         var seekBar = item.querySelector(".seek-bar");
 
-        playButton.addEventListener("click", function() {
+        var storedTime = localStorage.getItem("audioTime" + index);
+        if (storedTime) {
+            audioPlayer.currentTime = parseFloat(storedTime);
+        }
 
+        playButton.addEventListener("click", function() {
             if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
                 currentAudioPlayer.pause();
                 var playButtonPrev = document.querySelector(".playing");
@@ -36,17 +41,20 @@ document.addEventListener("DOMContentLoaded", function() {
             if (index < musicItems.length - 1) {
                 var nextButton = musicItems[index + 1].querySelector(".play-button");
                 nextButton.click();
+            } else {
+                
+                localStorage.setItem("lastPlayedIndex", index);
             }
         });
 
         audioPlayer.addEventListener("timeupdate", function() {
             seekBar.value = audioPlayer.currentTime;
+            
+            localStorage.setItem("audioTime" + index, audioPlayer.currentTime);
         });
 
         seekBar.addEventListener("change", function() {
             audioPlayer.currentTime = seekBar.value;
         });
-    });
-});
 
 var currentAudioPlayer = null;
