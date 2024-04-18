@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var videos = document.querySelectorAll('.video');
 
     videos.forEach(function(video) {
-       
+        
         video.addEventListener('loadeddata', function() {
-            var savedTime = localStorage.getItem(video.src);
+            var videoKey = video.dataset.key; 
+            var savedTime = localStorage.getItem(videoKey); 
             if (savedTime) {
                 video.currentTime = parseFloat(savedTime);
             }
@@ -22,13 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         video.addEventListener('pause', function() {
-           
-            localStorage.setItem(video.src, video.currentTime);
+            
+            var videoKey = video.dataset.key; 
+            localStorage.setItem(videoKey, video.currentTime); 
         });
 
         video.addEventListener('ended', function() {
-           
-            localStorage.removeItem(video.src);
+            
+            var videoKey = video.dataset.key;
+            localStorage.removeItem(videoKey);
         });
     });
 });
