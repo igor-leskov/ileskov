@@ -81,11 +81,11 @@
 <body>
     <div class="container">
         <h1 class="animated glitch"><span>4</span><span>0</span><span>4</span></h1>
-        <p class="animated glitch">Страница не найдена</p>
+        <p class="animated glitch" id="errorMessage"></p>
         <p class="description">Упс! Возможно, страница, которую вы ищете, была удалена или временно недоступна.</p>
         <button class="button" onclick="redirectToHome()">На главную</button>
     </div>
-
+    <script src="scripts/language.js" defer></script>
     <script>
         function redirectToHome() {
             window.location.href = "index.html";
