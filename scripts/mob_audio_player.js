@@ -10,9 +10,19 @@ document.addEventListener("DOMContentLoaded", function() {
         var playIcon = playButton.querySelector(".play-icon");
         var pauseIcon = playButton.querySelector(".pause-icon");
 
+        // Восстановление сохраненной позиции при загрузке аудио
+        audioPlayer.addEventListener("loadeddata", function() {
+            var savedTime = localStorage.getItem(audioSrc);
+            if (savedTime) {
+                audioPlayer.currentTime = parseFloat(savedTime);
+                seekBar.value = (parseFloat(savedTime) / audioPlayer.duration) * 100;
+            }
+        });
+
         playButton.addEventListener("click", function() {
             if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
                 currentAudioPlayer.pause();
+                localStorage.setItem(currentAudioPlayer.src, currentAudioPlayer.currentTime); 
                 var playButtonPrev = document.querySelector(".playing");
                 if (playButtonPrev) {
                     playButtonPrev.querySelector(".pause-icon").style.display = 'none';
@@ -29,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 playButton.classList.add("playing");
             } else {
                 audioPlayer.pause();
+                localStorage.setItem(audioSrc, audioPlayer.currentTime); 
                 playIcon.style.display = 'block';
                 pauseIcon.style.display = 'none';
                 playButton.classList.remove("playing");
@@ -39,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             playIcon.style.display = 'block';
             pauseIcon.style.display = 'none';
             seekBar.value = 0;
+            localStorage.removeItem(audioSrc); 
             if (index < musicItems.length - 1) {
                 var nextButton = musicItems[index + 1].querySelector(".play-button");
                 nextButton.click();
@@ -53,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         seekBar.addEventListener("input", function() {
             audioPlayer.currentTime = (seekBar.value / 100) * audioPlayer.duration;
+            localStorage.setItem(audioSrc, audioPlayer.currentTime); 
         });
     });
-}); 
+});
 
-var currentAudioPlayer = null;
