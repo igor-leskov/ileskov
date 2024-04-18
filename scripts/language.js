@@ -7,22 +7,28 @@ function redirectToHome() {
             return navigator.language || navigator.userLanguage;
         }
 
-        // Определяем язык браузера и перенаправляем на соответствующую страницу 404
-        document.addEventListener("DOMContentLoaded", function() {
+        // Функция для установки текста сообщения об ошибке
+        function setErrorMessage() {
             const browserLanguage = getBrowserLanguage();
-            let redirectPage;
-            const errorMessage = document.getElementById('errorMessage'); // Объявляем переменную здесь
+            let errorMessage = document.getElementById('errorMessage');
 
-            if (browserLanguage.startsWith('et')) {
-                redirectPage = "404_et.html";
-                errorMessage.innerText = "Lehekülge ei leitud";
+            if (errorMessage) {
+                if (browserLanguage.startsWith('et')) {
+                    errorMessage.innerText = "Lehekülge ei leitud";
+                } else {
+                    errorMessage.innerText = "Страница не найдена";
+                }
             } else {
-                redirectPage = "404.html";
-                errorMessage.innerText = "Страница не найдена";
+                console.error("Элемент с id 'errorMessage' не найден.");
             }
+        }
 
-            // Перенаправление на выбранную страницу
+        // Вызываем функцию после полной загрузки DOM
+        document.addEventListener("DOMContentLoaded", function() {
+            setErrorMessage();
+
+            // Перенаправляем на главную страницу через 3 секунды
             setTimeout(function() {
-                window.location.href = redirectPage;
-            }, 3000); // 3 секунды задержки перед перенаправлением
+                redirectToHome();
+            }, 3000);
         });
