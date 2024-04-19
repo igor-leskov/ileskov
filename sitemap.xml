@@ -48,5 +48,60 @@
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
+   <url>
+  <loc>https://ileskov.online/#bio</loc>
+  <video:video>
+    <video:thumbnail_loc>https://ileskov.online/images/FL.webp</video:thumbnail_loc>
+    <video:title>Взлёты и падения Тизер</video:title>
+    <video:description>После неожиданного успеха Игорь Лесков начал делать профессиональную карьеру певца: принимал участие в других конкурсах, выступал в концертах, сочинял и записывал собственные песни. Но в последний год о нем ничего не было слышно. О его судьбе и о том, что сейчас происходит в жизни Игоря, рассказывает документальный фильм «Взлёты и падения». Его снял человек, который поддерживал молодого певца, начиная с его первых шагов на сцене, – известный таллиннский музыкант и звукорежиссер Манолис Шехали.</video:description>
+    <video:content_loc>https://ileskov.online/video/video1.mp4</video:content_loc>
+    <video:duration>300</video:duration>
+    <video:publication_date>2024-04-19T08:00:00+00:00</video:publication_date>
+    <video:family_friendly>yes</video:family_friendly>
+  </video:video>
+</url>
+<url>
+  <loc>https://ileskov.online/#video</loc>
+  <video:video>
+    <video:thumbnail_loc>https://ileskov.online/images/SI.webp</video:thumbnail_loc>
+    <video:title>Igor Leskov - «Сияем»</video:title>
+    <video:content_loc>https://ileskov.online/video/video2.mp4</video:content_loc>
+    <video:duration>240</video:duration>
+    <video:publication_date>2024-04-19T08:00:00+00:00</video:publication_date>
+    <video:family_friendly>yes</video:family_friendly>
+  </video:video>
+</url>
+<url>
+  <loc>https://ileskov.online/#video</loc>
+  <video:video>
+    <video:thumbnail_loc>https://ileskov.online/images/TS!.webp</video:thumbnail_loc>
+    <video:title>Игорь Лесков, 18 лет, пос. Кохтла-Нымме, Эстония. «Часы»</video:title>
+    <video:content_loc>https://ileskov.online/video/video3.mp4</video:content_loc>
+    <video:duration>180</video:duration>
+    <video:publication_date>2024-04-19T08:00:00+00:00</video:publication_date>
+    <video:family_friendly>yes</video:family_friendly>
+  </video:video>
+</url>
+<url>
+  <loc>https://ileskov.online/#video</loc>
+  <video:video>
+    <video:thumbnail_loc>https://ileskov.online/images/TS!1.webp</video:thumbnail_loc>
+    <video:title>Игорь Лесков, 18 лет, пос. Кохтла-Нымме, Эстония. «Детектив»</video:title>
+    <video:content_loc>https://ileskov.online/video/video4.mp4</video:content_loc>
+    <video:duration>240</video:duration>
+    <video:publication_date>2024-04-19T08:00:00+00:00</video:publication_date>
+    <video:family_friendly>yes</video:family_friendly>
+  </video:video>
+</url>
+<url>
+  <loc>https://ileskov.online/#video</loc>
+  <video:video>
+    <video:thumbnail_loc>https://ileskov.online/images/TS!2.webp</video:thumbnail_loc>
+    <video:title>Игорь Лесков и Анне Вески. «Радоваться жизни»</video:title>
+    <video:content_loc>https://ileskov.online/video/video5.mp4</video:content_loc>
+    <video:duration>320</video:duration>
+    <video:publication_date>2024-04-19T08:00:00+00:00</video:publication_date>
+    <video:family_friendly>yes</video:family_friendly>
+  </video:video>
 </urlset>
 
