@@ -38,9 +38,9 @@
         }
 		
         @keyframes blink {
-            0% { color: #fff; }
+            0% { color: #000; }
             50% { color: #e83f33; }
-            100% { color: #fff; }
+            100% { color: #000; }
         }
 
         .blinking-text {
