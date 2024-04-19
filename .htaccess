@@ -1,9 +1,4 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-</IfModule>
-
 ErrorDocument 404 /404.html
-
 DirectoryIndex index.html
 
 <IfModule mod_expires.c>
@@ -13,10 +8,11 @@ DirectoryIndex index.html
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType video/mp4 "access plus 1 year"
     ExpiresByType audio/mp3 "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType font/ttf "access plus 1 month"
-    ExpiresByType font/otf "access plus 1 month"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
 
     FileETag None
 </IfModule>
@@ -28,29 +24,12 @@ DirectoryIndex index.html
 </IfModule>
 
 <IfModule mod_headers.c>
-    <FilesMatch "\.(css|js)$">
+    <FilesMatch "\.(css|js|webp|png|mp4|mp3)$">
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
 
-    <FilesMatch "\.(webp|png|mp4|mp3)$">
-        Header set Cache-Control "max-age=31536000, public"
-    </FilesMatch>
-</IfModule>
-
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType application/font-woff2 "access plus 1 year"
-</IfModule>
-
-<IfModule mod_headers.c>
     <FilesMatch "\.woff2$">
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
-</IfModule>
 
-<IfModule mod_headers.c>
-    <Files "scripts/service_worker.js">
-        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-    </Files>
 </IfModule>
-
