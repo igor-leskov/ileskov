@@ -45,6 +45,11 @@
             top: -233px;
         }
 
+        .window p {
+            font-size: 12px;
+            line-height: 1.6
+        }        
+
         .section a {
             color: #000;
             text-decoration: underline;
