@@ -36,24 +36,6 @@
             box-shadow: 0 2px 5px rgba(51, 51, 51, 0.5);
         }
 
-        @keyframes blink {
-            0% {
-            color: #000; 
-         }
-
-            50% {
-            color: #000; 
-         }
-
-            100% {
-            color: #000; 
-         }
-     }
-
-         .blinking-text {
-            animation: blink 1s infinite alternate; 
-         }
-
         .window {
             background-color: #e83f33;
             border-radius: 0;
