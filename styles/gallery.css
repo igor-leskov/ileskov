@@ -33,3 +33,8 @@
            transform: scale(0.9);
         }
 
+        .image-description_1 {
+           text-align: center;
+           margin-top: 10px
+        }
+
