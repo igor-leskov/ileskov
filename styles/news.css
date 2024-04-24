@@ -65,4 +65,13 @@
            animation: fadeInUp 0.5s ease-out;
        }
 
+       time {
+           font-style: italic;
+           font-size: 14px;
+           color: #888;
+           margin-top: 150px;
+           margin-left: 350px;
+           display: block;
+        }
+
        
