@@ -68,10 +68,17 @@
        time {
            font-style: italic;
            font-size: 14px;
-           color: #888;
-           margin-top: 150px;
-           margin-left: 350px;
-           display: block;
-        }
+           color: #000;
+           display: inline-block; 
+           margin-bottom: 15px;
+           margin-left: 15px;
+           font-weight: bold; 
+           text-transform: uppercase; 
+           letter-spacing: 1px; 
+           line-height: 1.2;
+           padding: 10px 20px; 
+           border-radius: 10px; 
+           background-color: #f0f0f0; 
+       }
 
        
