@@ -12,6 +12,7 @@
     <link rel="preload" href="styles/modal_image.css" as="style">
     <link rel="preload" href="styles/music.css" as="style">
 	<link rel="preload" href="styles/video_container.css" as="style">
+	<link rel="preload" href="styles/emotion.css" as="style">
 	<link rel="preload" href="images/1.webp" as="image">
 	<link rel="preload" href="images/2.webp" as="image">
     <link rel="preload" href="images/3.webp" as="image">
@@ -72,6 +73,10 @@
 	
 	<style>
     @import url('styles/scroll_right_icon.css') all;
+    </style>
+
+	<style>
+    @import url('styles/emotion.css') all;
     </style>
 
 	</head>
@@ -359,6 +364,12 @@
       <img src="images/ICON17.webp" alt="Я стал папой" width="500" height="262" loading="auto">
       <p>Я стал папой 🎊❤️</p>
      <time datetime="2024-02-01">ПУБЛИКАЦИЯ: 1 Февраля 2024 г.</time>
+     <div class="reactions">
+          <div class="like"><span class="fas fa-thumbs-up"></span></div>
+          <div class="love"><span class="fas fa-heart"></span></div>
+          <div class="laugh"><span class="fa-solid fa-face-laugh-squint"></span></div>
+          <div class="cry"><span class="fa-sharp fa-solid fa-face-sad-tear"></span></div>
+      </div>
     </div>
 <div class="news-item">
       <img src="images/ICON1.webp" alt="Важные обновления на сайте!" width="500" height="262" loading="auto">
@@ -625,6 +636,8 @@
     <script src="scripts/mob_version.js" defer></script>
     <script src="scripts/memory_audio.js" async></script>
 	<script src="scripts/scroll.js" async></script>
+   <script src="scripts/emotion.js" async></script>
+	  
 
    </body>
   </html>
