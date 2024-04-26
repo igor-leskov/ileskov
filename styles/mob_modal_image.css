@@ -47,11 +47,11 @@
     transform: translateY(-50%);
     cursor: pointer;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     user-select: none;
-    padding: 10px;
-    width: 40px;
-    height: 40px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
     background-color: rgba(0, 0, 0, .5);
     border: none;
     border-radius: 50%;
@@ -62,33 +62,15 @@
 }
 
 .prev {
-    left: 200px;
+    left: 20px;
 }
 
 .next {
-    right: 200px;
+    right: 20px;
 }
 
 .prev:hover,
 .next:hover {
     background-color: rgba(255, 255, 255, .1);
     transform: translateY(-50%) scale(1.1);
-}
-
-@media only screen and (max-width: 600px) {
-    .prev,
-    .next {
-        width: 30px;
-        height: 30px;
-        font-size: 18px;
-        padding: 5px;
-    }
-
-    .prev {
-        left: 20px;
-    }
-
-    .next {
-        right: 20px;
-    }
 }
