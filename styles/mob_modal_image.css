@@ -41,14 +41,14 @@
         }
 
         .prev, .next {
-             position: absolute;
-             op: 50%;
-             transform: translateY(-50%);
-             cursor: pointer;
-             color: #bbb;
-             font-size: 24px;
-             user-select: none;
-             padding: 10px;
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           cursor: pointer;
+           color: #fff;
+           font-size: 24px;
+           user-select: none;
+           padding: 10px;
         }
 
         .prev {
