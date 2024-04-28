@@ -55,12 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.onload = function() {
-    console.log("Window onload");
     document.querySelectorAll('.like-count').forEach(likeCountElement => {
         const newsId = likeCountElement.dataset.newsId;
-        console.log("newsId:", newsId);
         const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
-        console.log("likesCount:", likesCount);
         likeCountElement.textContent = likesCount;
     });
 };
