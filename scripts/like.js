@@ -45,16 +45,19 @@ function getCookie(name) {
         }
     }
 
-    document.querySelectorAll('.like-count').forEach(likeCountElement => {
-        const newsId = likeCountElement.dataset.newsId;
-        const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
-        likeCountElement.textContent = likesCount;
-    });
-
     document.querySelectorAll('.like-button').forEach(button => {
         button.addEventListener('click', function() {
             const newsId = this.dataset.newsId; 
             updateLikes(newsId);
         });
     });
+
+    setTimeout(function() {
+        document.querySelectorAll('.like-count').forEach(likeCountElement => {
+            const newsId = likeCountElement.dataset.newsId;
+            const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
+            likeCountElement.textContent = likesCount;
+        });
+    }, 500); 
 });
+
