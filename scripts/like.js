@@ -27,9 +27,9 @@ function updateLikes(newsId) {
         if (!likedCookie) {
             let likesCount = parseInt(getCookie('likes-' + newsId) || 0);
             likesCount++;
-            setCookie('likes-' + newsId, likesCount, 30); 
+            setCookie('likes-' + newsId, likeCount, 30); 
             setCookie('liked-' + newsId, 'true', 30);
-            document.getElementById('like-count-' + newsId).textContent = likesCount;
+            document.getElementById('like-count-' + newsId).textContent = likeCount;
         } else {
             alert("Вы уже поставили отметку Нравится этой новости.");
         }
@@ -58,7 +58,7 @@ window.onload = function() {
     document.querySelectorAll('.like-count').forEach(likeCountElement => {
         const newsId = likeCountElement.dataset.newsId;
         const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
-        likeCountElement.textContent = likesCount;
+        likeCountElement.textContent = likeCount;
     });
 };
 
