@@ -51,13 +51,13 @@ function getCookie(name) {
             updateLikes(newsId);
         });
     });
-
-    setTimeout(function() {
-        document.querySelectorAll('.like-count').forEach(likeCountElement => {
-            const newsId = likeCountElement.dataset.newsId;
-            const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
-            likeCountElement.textContent = likesCount;
-        });
-    }, 500); 
 });
+
+window.onload = function() {
+    document.querySelectorAll('.like-count').forEach(likeCountElement => {
+        const newsId = likeCountElement.dataset.newsId;
+        const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
+        likeCountElement.textContent = likesCount;
+    });
+};
 
