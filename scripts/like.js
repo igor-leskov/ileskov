@@ -20,16 +20,23 @@ function getCookie(name) {
     }
 
     function updateLikes(newsId) {
-        if (getCookie("cookieconsent") === "accepted") {
+    const consent = getCookie("cookieconsent");
+    const likedCookie = getCookie('liked-' + newsId);
+
+    if (consent === "accepted") {
+        if (!likedCookie) {
             let likesCount = parseInt(getCookie('likes-' + newsId) || 0);
             likesCount++;
             setCookie('likes-' + newsId, likesCount, 30); 
+            setCookie('liked-' + newsId, 'true', 30);
             document.getElementById('like-count-' + newsId).textContent = likesCount;
         } else {
-            alert("Пожалуйста, разрешите использование Cookies для возможности ставить отметки Нравится новостям.");
+            alert("Вы уже поставили отметку Нравится этой новости.");
         }
+    } else {
+        alert("Пожалуйста, разрешите использование Cookies для возможности ставить отметки Нравится новостям.");
     }
-
+}
     document.addEventListener('DOMContentLoaded', function() {
         if (!getCookie("cookieconsent")) {
             var consentBar = document.getElementById("cookie-consent-bar");
