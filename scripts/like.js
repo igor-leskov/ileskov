@@ -38,17 +38,23 @@ function getCookie(name) {
     }
 }
     document.addEventListener('DOMContentLoaded', function() {
-        if (!getCookie("cookieconsent")) {
-            var consentBar = document.getElementById("cookie-consent-bar");
-            if (consentBar) {
-                consentBar.style.display = "block";
-            }
+    if (!getCookie("cookieconsent")) {
+        var consentBar = document.getElementById("cookie-consent-bar");
+        if (consentBar) {
+            consentBar.style.display = "block";
         }
+    }
 
-        document.querySelectorAll('.like-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const newsId = this.dataset.newsId; 
-                updateLikes(newsId);
-            });
+    document.querySelectorAll('.like-count').forEach(likeCountElement => {
+        const newsId = likeCountElement.dataset.newsId;
+        const likesCount = parseInt(getCookie('likes-' + newsId) || 0);
+        likeCountElement.textContent = likesCount;
+    });
+
+    document.querySelectorAll('.like-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const newsId = this.dataset.newsId; 
+            updateLikes(newsId);
         });
     });
+});
