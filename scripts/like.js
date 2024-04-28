@@ -1,25 +1,25 @@
 function getCookie(name) {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.startsWith(name + '=')) {
-                return cookie.substring(name.length + 1);
-            }
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
         }
-        return null;
     }
+    return null;
+}
 
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
     }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
-    function updateLikes(newsId) {
+function updateLikes(newsId) {
     const consent = getCookie("cookieconsent");
     const likedCookie = getCookie('liked-' + newsId);
 
@@ -29,7 +29,7 @@ function getCookie(name) {
             likesCount++;
             setCookie('likes-' + newsId, likesCount, 30); 
             setCookie('liked-' + newsId, 'true', 30);
-            document.getElementById('like-count-' + newsId).textContent = likesCount;
+            document.getElementById('like-' + newsId).textContent = likesCount;
         } else {
             alert("Вы уже поставили отметку Нравится этой новости.");
         }
@@ -37,7 +37,8 @@ function getCookie(name) {
         alert("Пожалуйста, разрешите использование Cookies для возможности ставить отметки Нравится новостям.");
     }
 }
-    document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     if (!getCookie("cookieconsent")) {
         var consentBar = document.getElementById("cookie-consent-bar");
         if (consentBar) {
