@@ -25,7 +25,6 @@ function hasLiked(newsId) {
   return getCookie("like_" + newsId) === "true";
 }
 
-// Функция для установки лайка
 function like(newsId) {
   var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
   var likesCount = parseInt(likesCountElement.innerText);
@@ -48,14 +47,6 @@ likeButtons.forEach(function(button) {
     } else {
       alert("Пожалуйста, согласитесь на использование Cookie, чтобы ставить отметки Нравится новостям.");
     }
-  });
-});
-
-var likeButtons = document.querySelectorAll('.like-button');
-likeButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var newsId = button.getAttribute('data-news-id');
-    like(newsId);
   });
 });
 
