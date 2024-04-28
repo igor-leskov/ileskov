@@ -1,10 +1,3 @@
-function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -35,9 +28,21 @@ function like(newsId) {
     likesCountElement.innerText = likesCount;
     setCookie("like_" + newsId, "true", 365); 
   } else {
-    alert("Вы уже поставили лайк для этой новости!");
+    alert("Вы уже ставили отметку Нравится для этой новости!");
   }
 }
+
+var likeButtons = document.querySelectorAll('.like-button');
+likeButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    var newsId = button.getAttribute('data-news-id');
+    if (getCookie("cookie_consent") === "true") {
+      like(newsId);
+    } else {
+      alert("Пожалуйста, согласитесь на использование Cookie, чтобы ставить отметки Нравится новостям.");
+    }
+  });
+});
 
 var likeButtons = document.querySelectorAll('.like-button');
 likeButtons.forEach(function(button) {
@@ -50,13 +55,16 @@ likeButtons.forEach(function(button) {
 window.onload = function() {
   var likesFromCookies = document.cookie.split(';').filter(function(cookie) {
     return cookie.trim().startsWith("like_");
-  }).length;
+  }).reduce(function(acc, cookie) {
+    var newsId = cookie.trim().split('=')[0].split('_')[1];
+    acc[newsId] = (acc[newsId] || 0) + 1;
+    return acc;
+  }, {});
 
-  var likesCountElements = document.querySelectorAll('.likes-count');
-  likesCountElements.forEach(function(element) {
-    var newsId = element.parentElement.getAttribute('data-news-id');
-    var likesCount = parseInt(element.innerText);
-    likesCount += likesFromCookies;
-    element.innerText = likesCount;
-  });
+  for (var newsId in likesFromCookies) {
+    var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
+    var likesCount = parseInt(likesCountElement.innerText);
+    likesCount += likesFromCookies[newsId];
+    likesCountElement.innerText = likesCount;
+  }
 }
