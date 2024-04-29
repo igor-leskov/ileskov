@@ -73,6 +73,18 @@ function like(newsId) {
     }
 }
 
+function countOtherLikes() {
+    var otherLikes = document.cookie.split(';').filter(function(cookie) {
+        return cookie.trim().startsWith("like_") && cookie.trim().indexOf("=") !== -1;
+    }).reduce(function(acc, cookie) {
+        var newsId = cookie.trim().split('=')[0].split('_')[1];
+        acc[newsId] = (acc[newsId] || 0) + 1;
+        return acc;
+    }, {});
+
+    return otherLikes;
+}
+
 var likeButtons = document.querySelectorAll('.like-button');
 likeButtons.forEach(function(button) {
     button.addEventListener('click', function() {
@@ -86,13 +98,7 @@ likeButtons.forEach(function(button) {
 });
 
 window.onload = function() {
-    var likesFromCookies = document.cookie.split(';').filter(function(cookie) {
-        return cookie.trim().startsWith("like_");
-    }).reduce(function(acc, cookie) {
-        var newsId = cookie.trim().split('=')[0].split('_')[1];
-        acc[newsId] = (acc[newsId] || 0) + 1;
-        return acc;
-    }, {});
+    var likesFromCookies = countOtherLikes();
 
     for (var newsId in likesFromCookies) {
         var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
