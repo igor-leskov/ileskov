@@ -18,7 +18,13 @@
     width: 135px;
     height: 52px;
     margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
+
+.logo:hover {
+    transform: scale(0.9);
+}
+
 
 .flyer-container h3 {
     font-size: 14px;
@@ -35,4 +41,9 @@
     text-decoration: none;
     color: #469063;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.telegram-link:hover {
+    transform: scale(0.9);
 }
