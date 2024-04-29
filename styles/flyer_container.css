@@ -41,3 +41,10 @@
 .telegram-link:hover {
     transform: scale(0.9);
 }
+
+.telegram {
+  position: relative;
+  top: -1px; 
+  left: -1px; 
+}
+
