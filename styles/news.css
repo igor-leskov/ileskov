@@ -13,7 +13,7 @@
 		
 		.news-feed::-webkit-scrollbar {
            height: 10px;
-		   display: none;
+		 
         }
 
         .news-feed::-webkit-scrollbar-track {
