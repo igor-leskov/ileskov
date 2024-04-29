@@ -1,0 +1,38 @@
+.flyer-container {
+    position: fixed;
+    top: 140px;
+    right: 50px;
+    width: 180px;
+    height: 200px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.logo {
+    width: 135px;
+    height: 52px;
+    margin-bottom: 10px;
+}
+
+.flyer-container h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    color: #333333;
+    text-align: center;
+}
+
+.telegram-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #469063;
+    text-align: center;
+}
