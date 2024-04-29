@@ -1,13 +1,14 @@
 .flyer-container {
     position: fixed;
-    top: 140px;
-    right: 50px;
-    width: 180px;
-    height: 200px;
+    top: 12.5%;
+    right: 5%;
+    width: 150px;
+    max-width: 300px;
+    height: auto;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -15,19 +16,13 @@
 }
 
 .logo {
-    width: 135px;
-    height: 52px;
+    width: 100%;
+    height: auto;
     margin-bottom: 10px;
-    transition: transform 0.3s ease;
 }
-
-.logo:hover {
-    transform: scale(0.9);
-}
-
 
 .flyer-container h3 {
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bold;
     margin: 0;
     color: #333333;
@@ -41,7 +36,6 @@
     text-decoration: none;
     color: #469063;
     text-align: center;
-    transition: transform 0.3s ease;
 }
 
 .telegram-link:hover {
