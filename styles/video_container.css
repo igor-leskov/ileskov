@@ -7,7 +7,6 @@
 
 .video-container::-webkit-scrollbar {
     height: 10px;
-    display: none;
 }
 
 .video-container::-webkit-scrollbar-track {
@@ -39,9 +38,8 @@
 
 .video-item iframe {
     padding-top: calc(100% * (576 / 1024)); 
-    /* Настройки для iframe */
-    width: 100%; /* Ширина iframe занимает всю доступную ширину */
-    height: auto; /* Высота автоматически рассчитывается, чтобы сохранить соотношение сторон */
+    width: 100%; 
+    height: auto; 
 }
 
 .video-item img {
