@@ -32,7 +32,8 @@ function redirectToPrivacyPolicyEt() {
 }
 
 function hasLiked(newsId) {
-    return getLocalStorageItem("like_" + newsId) === "true";
+    var likes = parseInt(getLocalStorageItem("like_" + newsId));
+    return !isNaN(likes) && likes > 0;
 }
 
 function like(newsId) {
@@ -42,52 +43,27 @@ function like(newsId) {
     }
 
     var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
-    var likesCount = parseInt(likesCountElement.innerText);
+    var likesCount = parseInt(likesCountElement.innerText) || 0; 
 
     if (!hasLiked(newsId)) {
         likesCount++;
         likesCountElement.innerText = likesCount;
-        setLocalStorageItem("like_" + newsId, "true");
+
+        setLocalStorageItem("like_" + newsId, (parseInt(getLocalStorageItem("like_" + newsId)) || 0) + 1);
     } else {
         alert("Вы уже ставили отметку Нравится для этой новости!");
     }
 }
-
-var likeButtons = document.querySelectorAll('.like-button');
-likeButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-        var newsId = button.getAttribute('data-news-id');
-        like(newsId);
-    });
-});
-
-window.addEventListener('DOMContentLoaded', function() {
-    var consentBar = document.getElementById("cookie-consent-bar");
-    if (consentBar && !getLocalStorageItem("cookieconsent")) {
-        consentBar.style.display = "block";
-    }
-
-    fixCookieConsentBarPosition();
-
-    var likesFromStorage = countOtherLikes();
-
-    for (var newsId in likesFromStorage) {
-        var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
-        if (likesCountElement) {
-            var likesCount = parseInt(likesCountElement.innerText) || 0;
-            var additionalLikes = likesFromStorage[newsId];
-            likesCount += additionalLikes;
-            likesCountElement.innerText = likesCount;
-        }
-    }
-});
 
 function countOtherLikes() {
     var otherLikes = {};
     for (var key in localStorage) {
         if (key.startsWith("like_")) {
             var newsId = key.split('_')[1];
-            otherLikes[newsId] = (otherLikes[newsId] || 0) + 1; 
+            var count = parseInt(localStorage.getItem(key));
+            if (!isNaN(count)) {
+                otherLikes[newsId] = count;
+            }
         }
     }
     return otherLikes;
