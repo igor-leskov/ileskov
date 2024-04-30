@@ -1,26 +1,13 @@
-function getCookie(name) {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith(name + '=')) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return null;
+function getLocalStorageItem(name) {
+    return localStorage.getItem(name);
 }
 
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+function setLocalStorageItem(name, value) {
+    localStorage.setItem(name, value);
 }
 
 function acceptCookies() {
-    setCookie("cookieconsent", "accepted", 30);
+    setLocalStorageItem("cookieconsent", "accepted");
     var consentBar = document.getElementById("cookie-consent-bar");
     if (consentBar) {
         consentBar.style.display = "none";
@@ -45,11 +32,11 @@ function redirectToPrivacyPolicyEt() {
 }
 
 function hasLiked(newsId) {
-    return getCookie("like_" + newsId) === "true";
+    return getLocalStorageItem("like_" + newsId) === "true";
 }
 
 function like(newsId) {
-    if (!getCookie("cookieconsent")) {
+    if (!getLocalStorageItem("cookieconsent")) {
         alert("Пожалуйста, согласитесь на использование Cookie, чтобы ставить отметки Нравится новостям.");
         return;
     }
@@ -60,7 +47,7 @@ function like(newsId) {
     if (!hasLiked(newsId)) {
         likesCount++;
         likesCountElement.innerText = likesCount;
-        setCookie("like_" + newsId, "true", 365);
+        setLocalStorageItem("like_" + newsId, "true");
     } else {
         alert("Вы уже ставили отметку Нравится для этой новости!");
     }
@@ -76,30 +63,29 @@ likeButtons.forEach(function(button) {
 
 window.addEventListener('DOMContentLoaded', function() {
     var consentBar = document.getElementById("cookie-consent-bar");
-    if (consentBar && !getCookie("cookieconsent")) {
+    if (consentBar && !getLocalStorageItem("cookieconsent")) {
         consentBar.style.display = "block";
     }
 
     fixCookieConsentBarPosition();
 
-    var likesFromCookies = countOtherLikes();
+    var likesFromStorage = countOtherLikes();
 
-    for (var newsId in likesFromCookies) {
+    for (var newsId in likesFromStorage) {
         var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
         var likesCount = parseInt(likesCountElement.innerText);
-        likesCount += likesFromCookies[newsId];
+        likesCount += likesFromStorage[newsId];
         likesCountElement.innerText = likesCount;
     }
 });
 
 function countOtherLikes() {
-    var otherLikes = document.cookie.split(';').filter(function(cookie) {
-        return cookie.trim().startsWith("like_") && cookie.trim().indexOf("=") !== -1;
-    }).reduce(function(acc, cookie) {
-        var newsId = cookie.trim().split('=')[0].split('_')[1];
-        acc[newsId] = (acc[newsId] || 0) + 1;
-        return acc;
-    }, {});
-
+    var otherLikes = {};
+    for (var key in localStorage) {
+        if (key.startsWith("like_")) {
+            var newsId = key.split('_')[1];
+            otherLikes[newsId] = parseInt(localStorage.getItem(key));
+        }
+    }
     return otherLikes;
 }
