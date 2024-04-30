@@ -69,7 +69,7 @@
            font-style: italic;
            font-size: 14px;
            color: #000;
-           display: flex;
+           display: inline-block; 
            margin-bottom: 15px;
            margin-left: 15px;
            font-weight: bold; 
@@ -78,7 +78,6 @@
            line-height: 1.2;
            padding: 10px 20px; 
            border-radius: 10px; 
-           align-items: center;
-           background-color: #f0f0f0;
-           margin: 10px 15px 15px;
-        }
+           background-color: #f0f0f0; 
+       }
+
