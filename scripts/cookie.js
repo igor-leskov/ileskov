@@ -32,8 +32,7 @@ function redirectToPrivacyPolicyEt() {
 }
 
 function hasLiked(newsId) {
-    var likes = parseInt(getLocalStorageItem("like_" + newsId));
-    return !isNaN(likes) && likes > 0;
+    return getLocalStorageItem("like_" + newsId) === "true";
 }
 
 function like(newsId) {
@@ -43,12 +42,12 @@ function like(newsId) {
     }
 
     var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
-    var likesCount = parseInt(likesCountElement.innerText) || 0;
+    var likesCount = parseInt(likesCountElement.innerText);
 
     if (!hasLiked(newsId)) {
         likesCount++;
         likesCountElement.innerText = likesCount;
-        setLocalStorageItem("like_" + newsId, (parseInt(getLocalStorageItem("like_" + newsId)) || 0) + 1);
+        setLocalStorageItem("like_" + newsId, "true");
     } else {
         alert("Вы уже ставили отметку Нравится для этой новости!");
     }
@@ -67,13 +66,27 @@ window.addEventListener('DOMContentLoaded', function() {
     if (consentBar && !getLocalStorageItem("cookieconsent")) {
         consentBar.style.display = "block";
     }
+
     fixCookieConsentBarPosition();
 
-    var likeElements = document.querySelectorAll('[data-news-id]');
-    likeElements.forEach(function(element) {
-        var newsId = element.getAttribute('data-news-id');
-        var likesCountElement = element.querySelector('.likes-count');
-        var storedLikes = parseInt(getLocalStorageItem("like_" + newsId)) || 0;
-        likesCountElement.innerText = storedLikes;
-    });
+    var likesFromStorage = countOtherLikes();
+
+    for (var newsId in likesFromStorage) {
+        var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
+        var likesCount = parseInt(likesCountElement.innerText);
+        likesCount += likesFromStorage[newsId];
+        likesCountElement.innerText = likesCount;
+    }
 });
+
+function countOtherLikes() {
+    var otherLikes = {};
+    for (var key in localStorage) {
+        if (key.startsWith("like_")) {
+            var newsId = key.split('_')[1];
+            otherLikes[newsId] = parseInt(localStorage.getItem(key));
+        }
+    }
+    return otherLikes;
+}
+
