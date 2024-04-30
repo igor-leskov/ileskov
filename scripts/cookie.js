@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function() {
     for (var newsId in likesFromStorage) {
         var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
         if (likesCountElement) {
-            var likesCount = parseInt(likesCountElement.innerText) || 0; 
+            var likesCount = Number(likesCountElement.innerText.replace(/\D/g, '')) || 0;
             var additionalLikes = likesFromStorage[newsId];
             likesCount += additionalLikes;
             likesCountElement.innerText = likesCount;
