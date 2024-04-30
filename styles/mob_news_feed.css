@@ -1,4 +1,4 @@
-       .news-feed {
+.news-feed {
     display: flex;
     overflow-x: auto;
     gap: 20px;
@@ -64,45 +64,20 @@
     animation: fadeInUp .5s ease-out
 }
 
-.time-and-like {
-           font-style: italic;
-           font-size: 14px;
-           color: #000;
-           display: flex;
-           margin-bottom: 15px;
-           margin-left: 15px;
-           font-weight: bold; 
-           text-transform: uppercase; 
-           letter-spacing: 1px; 
-           line-height: 1.2;
-           padding: 10px 20px; 
-           border-radius: 10px; 
-           align-items: center;
-           background-color: #f0f0f0;
-           margin: 10px 15px 15px;
-        }
-
-        .like-button {
-           border: none;
-           background: transparent;
-           cursor: pointer;
-           font-size: 14px;
-           display: flex;
-           align-items: center;
-           gap: 5px;
-           color: #333;
-           font-weight: bold;
-        }
-
-        .like-button:hover {
-           color: #e83e33;
-        }
-
-        .like-icon {
-           width: 16px;
-           height: 16px;
-           background-size: cover;
-           display: inline-block;
-        }
-
-       
+.time {
+    font-style: italic;
+    font-size: 14px; 
+    color: #000;
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-weight: bold; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    line-height: 1.2;
+    padding: 10px 20px; 
+    border-radius: 10px; 
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 10px 15px 15px;
+}
