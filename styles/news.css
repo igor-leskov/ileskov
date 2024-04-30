@@ -1,4 +1,4 @@
-.news-feed {
+        .news-feed {
            display: flex;
 		   overflow-x: auto;
            gap: 20px;
@@ -61,11 +61,11 @@
 	       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 		
-	    .news-item {
+	.news-item {
            animation: fadeInUp 0.5s ease-out;
         }
 
-        .time-and-like {
+        .time {
            font-style: italic;
            font-size: 14px;
            color: #000;
@@ -82,28 +82,3 @@
            background-color: #f0f0f0;
            margin: 10px 15px 15px;
         }
-
-        .like-button {
-           border: none;
-           background: transparent;
-           cursor: pointer;
-           font-size: 14px;
-           display: flex;
-           align-items: center;
-           gap: 5px;
-           color: #333;
-           font-weight: bold;
-        }
-
-        .like-button:hover {
-           color: #e83e33;
-        }
-
-        .like-icon {
-           width: 16px;
-           height: 16px;
-           background-size: cover;
-           display: inline-block;
-        }
-
-       
