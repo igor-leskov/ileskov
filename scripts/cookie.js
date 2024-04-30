@@ -73,9 +73,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
     for (var newsId in likesFromStorage) {
         var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
-        var likesCount = parseInt(likesCountElement.innerText);
-        likesCount += likesFromStorage[newsId];
-        likesCountElement.innerText = likesCount;
+        if (likesCountElement) {
+            var likesCount = parseInt(likesCountElement.innerText) || 0; 
+            var additionalLikes = likesFromStorage[newsId];
+            likesCount += additionalLikes;
+            likesCountElement.innerText = likesCount;
+        }
     }
 });
 
@@ -84,9 +87,8 @@ function countOtherLikes() {
     for (var key in localStorage) {
         if (key.startsWith("like_")) {
             var newsId = key.split('_')[1];
-            otherLikes[newsId] = parseInt(localStorage.getItem(key));
+            otherLikes[newsId] = (otherLikes[newsId] || 0) + 1; 
         }
     }
     return otherLikes;
 }
-
