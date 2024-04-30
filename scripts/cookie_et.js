@@ -44,7 +44,7 @@ function redirectToPrivacyPolicyEt() {
     window.location.href = policyPage;
 }
 
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
     
     if (!getCookie("cookieconsent")) {
         var consentBar = document.getElementById("cookie-consent-bar");
@@ -97,7 +97,7 @@ likeButtons.forEach(function(button) {
     });
 });
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', function() {
     var likesFromCookies = countOtherLikes();
 
     for (var newsId in likesFromCookies) {
@@ -106,4 +106,5 @@ window.onload = function() {
         likesCount += likesFromCookies[newsId];
         likesCountElement.innerText = likesCount;
     }
-}
+});
+
