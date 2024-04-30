@@ -43,30 +43,37 @@ function like(newsId) {
     }
 
     var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
-    var likesCount = parseInt(likesCountElement.innerText) || 0; 
+    var likesCount = parseInt(likesCountElement.innerText) || 0;
 
     if (!hasLiked(newsId)) {
         likesCount++;
         likesCountElement.innerText = likesCount;
-
         setLocalStorageItem("like_" + newsId, (parseInt(getLocalStorageItem("like_" + newsId)) || 0) + 1);
     } else {
-        alert("Te olete juba sellele uudisele Meeldimise märgi pannud!);
+        alert("Te olete juba sellele uudisele Meeldimise märgi pannud!");
     }
 }
 
-function countOtherLikes() {
-    var otherLikes = {};
-    for (var key in localStorage) {
-        if (key.startsWith("like_")) {
-            var newsId = key.split('_')[1];
-            var count = parseInt(localStorage.getItem(key));
-            if (!isNaN(count)) {
-                otherLikes[newsId] = count;
-            }
-        }
+var likeButtons = document.querySelectorAll('.like-button');
+likeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        var newsId = button.getAttribute('data-news-id');
+        like(newsId);
+    });
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    var consentBar = document.getElementById("cookie-consent-bar");
+    if (consentBar && !getLocalStorageItem("cookieconsent")) {
+        consentBar.style.display = "block";
     }
-    return otherLikes;
-}
+    fixCookieConsentBarPosition();
 
-
+    var likeElements = document.querySelectorAll('[data-news-id]');
+    likeElements.forEach(function(element) {
+        var newsId = element.getAttribute('data-news-id');
+        var likesCountElement = element.querySelector('.likes-count');
+        var storedLikes = parseInt(getLocalStorageItem("like_" + newsId)) || 0;
+        likesCountElement.innerText = storedLikes;
+    });
+});
