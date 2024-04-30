@@ -97,13 +97,30 @@ likeButtons.forEach(function(button) {
     });
 });
 
+function countOtherLikes() {
+    var otherLikes = document.cookie.split(';').filter(function(cookie) {
+        return cookie.trim().startsWith("like_") && cookie.trim().indexOf("=") !== -1;
+    }).reduce(function(acc, cookie) {
+        var newsId = cookie.trim().split('=')[0].split('_')[1];
+        acc[newsId] = (acc[newsId] || 0) + 1;
+        return acc;
+    }, {});
+
+    console.log("Другие отметки:", otherLikes);
+    return otherLikes;
+}
+
 window.onload = function() {
     var likesFromCookies = countOtherLikes();
 
+    console.log("Отметки из файлов Сookie:", likesFromCookies); // Добавить эту строку для отладки
+
     for (var newsId in likesFromCookies) {
+        console.log("News ID:", newsId);
         var likesCountElement = document.querySelector('[data-news-id="' + newsId + '"] .likes-count');
         var likesCount = parseInt(likesCountElement.innerText);
         likesCount += likesFromCookies[newsId];
         likesCountElement.innerText = likesCount;
     }
 }
+
