@@ -87,7 +87,10 @@ function countOtherLikes() {
     for (var key in localStorage) {
         if (key.startsWith("like_")) {
             var newsId = key.split('_')[1];
-            otherLikes[newsId] = (otherLikes[newsId] || 0) + 1; 
+            var liked = localStorage.getItem(key) === "true";
+            if (liked) {
+                otherLikes[newsId] = (otherLikes[newsId] || 0) + 1; 
+            }
         }
     }
     return otherLikes;
