@@ -81,3 +81,46 @@
            background-color: #f0f0f0; 
        }
 
+       .carousel {
+           position: relative;
+           max-width: 500px; 
+       }
+
+       .slide {
+           display: none;
+       }
+
+       .active {
+           display: block; 
+       }
+
+       .prev, .next {
+           cursor: pointer;
+           position: absolute;
+           top: 38%;
+           width: 30px;
+           margin-top: -25px;
+           padding: 5px;
+           color: white;
+           font-weight: bold;
+           font-size: 18px;
+           transition: 0.6s ease;
+           user-select: none;
+        }
+
+        .next {
+           border-radius: 3px 3px 3px 3px;
+           right: 374px;
+        }
+
+        .prev {
+           border-radius: 3px 3px 3px 3px;
+           left: 45px;
+        }
+
+        .prev:hover, .next:hover {
+           background-color: rgba(0,0,0,0.8);
+        }
+
+
+
