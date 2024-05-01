@@ -1,17 +1,6 @@
-var images = [
-    "images/image1.webp",
-    "images/image2.webp",
-    "images/image3.webp",
-    "images/image4.webp",
-    "images/image5.webp",
-    "images/image7.webp",
-    "images/image8.webp",
-    "images/image9.webp",
-    "images/image6.webp"
-];
+var images = ["images/image1.webp", "images/image2.webp", "images/image3.webp", "images/image4.webp", "images/image5.webp", "images/image7.webp", "images/image8.webp", "images/image9.webp", "images/image6.webp"];
 var currentImageIndex = 0;
 var currentAudioPlayer = null;
-
 function openModal(imageSrc) {
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("modalImg");
@@ -19,7 +8,6 @@ function openModal(imageSrc) {
     modalImg.src = imageSrc;
     document.body.style.overflow = "hidden";
     document.body.classList.add("modal-open");
-    var scrollTopButton = document.getElementById("scrollTopButton");
 }
 
 function closeModal() {
@@ -27,7 +15,6 @@ function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
     document.body.classList.remove("modal-open");
-    document.getElementById("scrollTopButton").focus();
 }
 
 function prevImage() {
@@ -55,9 +42,6 @@ function closeModalOnClick(event) {
         modal.style.display = "none";
         document.body.style.overflow = "auto";
         document.body.classList.remove("modal-open");
-        
-        scrollTopButton.style.display = "block";
-        
     }
 }
 
