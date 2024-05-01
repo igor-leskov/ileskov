@@ -56,11 +56,11 @@
         }
 
         .prev {
-           left: 10px;
+           left: 150px;
         }
 
         .next {
-           right: 10px;
+           right: 150px;
         }
 
         .next:hover {
