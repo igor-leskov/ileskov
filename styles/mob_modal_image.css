@@ -27,7 +27,6 @@
     position: absolute;
     top: 15px;
     right: 35px;
-    color: rgba(0,0,0,.5);
     font-size: 40px;
     font-weight: 700;
     transition: .3s;
@@ -64,6 +63,7 @@
 
 .close {
     right: 54px;
-    top: 90px;
+    top: 190px;
+    color: rgba(0,0,0,.5);
 }
 
