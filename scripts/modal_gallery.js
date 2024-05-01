@@ -20,7 +20,6 @@ function openModal(imageSrc) {
     document.body.style.overflow = "hidden";
     document.body.classList.add("modal-open");
     var scrollTopButton = document.getElementById("scrollTopButton");
-    scrollTopButton.style.display = "none";
 }
 
 function closeModal() {
