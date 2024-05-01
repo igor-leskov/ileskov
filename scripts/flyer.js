@@ -1,9 +1,10 @@
 const flyer = document.querySelector('.flyer-container');
+flyer.style.opacity = '0';
+flyer.style.visibility = 'hidden';
 
 let hideTimer = null;
 
 function handleScroll() {
- 
     clearTimeout(hideTimer);
 
     flyer.style.opacity = '1';
