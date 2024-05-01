@@ -14,8 +14,8 @@ function handleScroll() {
      
         setTimeout(() => {
             flyer.style.visibility = 'hidden';
-        }, 300); 
-    }, 3000);
+        }, 100); 
+    }, 1000);
 }
 
 window.addEventListener('scroll', handleScroll);
