@@ -92,7 +92,7 @@
            display: block; 
        }
 
-       .prev, .next {
+       .pre, .nex {
            cursor: pointer;
            position: absolute;
            top: 42%;
@@ -106,17 +106,17 @@
            user-select: none;
         }
 
-        .next {
+        .nex {
            border-radius: 3px 3px 3px 3px;
            right: 374px;
         }
 
-        .prev {
+        .pre {
            border-radius: 3px 3px 3px 3px;
            left: 45px;
         }
 
-        .prev:hover, .next:hover {
+        .pre:hover, .nex:hover {
            background-color: rgba(0,0,0,0.8);
         }
 
