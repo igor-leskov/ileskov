@@ -109,4 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    musicItems.forEach(function(item) {
+        var playButton = item.querySelector(".play-button");
+
+        playButton.addEventListener("click", function() {
+            if (currentVideo) {
+                currentVideo.pause();
+            }
+        });
+    });
 });
