@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            if (currentAudioPlayer) {
+            if (currentAudioPlayer && !currentAudioPlayer.paused) {
                 currentAudioPlayer.pause();
                 var playButtonPrev = document.querySelector(".playing");
                 if (playButtonPrev) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playButton.innerHTML = "&#10074;&#10074;";
                 playButton.classList.add("playing");
 
-                if (currentVideo) {
+                if (currentVideo && !currentVideo.paused) {
                     currentVideo.pause();
                 }
             } else {
