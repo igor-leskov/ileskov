@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (currentAudioPlayer) {
                 currentAudioPlayer.pause();
+                var playButtonPrev = document.querySelector(".playing");
+                if (playButtonPrev) {
+                    playButtonPrev.innerHTML = "&#9658;";
+                    playButtonPrev.classList.remove("playing");
+                }
             }
         });
 
