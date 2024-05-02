@@ -19,33 +19,45 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         playButton.addEventListener("click", function() {
-            if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
-                currentAudioPlayer.pause();
-                localStorage.setItem(currentAudioPlayer.src, currentAudioPlayer.currentTime); 
-                var playButtonPrev = document.querySelector(".playing");
-                if (playButtonPrev) {
-                    playButtonPrev.querySelector(".pause-icon").style.display = 'none';
-                    playButtonPrev.querySelector(".play-icon").style.display = 'block';
-                    playButtonPrev.classList.remove("playing");
-                }
-            }
+    if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
+        currentAudioPlayer.pause();
+        localStorage.setItem(currentAudioPlayer.src, currentAudioPlayer.currentTime); 
+        var playButtonPrev = document.querySelector(".playing");
+        if (playButtonPrev) {
+            playButtonPrev.querySelector(".pause-icon").style.display = 'none';
+            playButtonPrev.querySelector(".play-icon").style.display = 'block';
+            playButtonPrev.classList.remove("playing");
+        }
+    }
 
-            currentAudioPlayer = audioPlayer;
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
-                playButton.classList.add("playing");
-            } else {
-                audioPlayer.pause();
-                localStorage.setItem(audioSrc, audioPlayer.currentTime); 
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-                playButton.classList.remove("playing");
-            }
-        });
+    currentAudioPlayer = audioPlayer;
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        playButton.classList.add("playing");
+    } else {
+        audioPlayer.pause();
+        localStorage.setItem(audioSrc, audioPlayer.currentTime); 
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        playButton.classList.remove("playing");
+    }
+});
 
-        audioPlayer.addEventListener("ended", function() {
+audioPlayer.addEventListener("pause", function() {
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    playButton.classList.remove("playing");
+});
+
+audioPlayer.addEventListener("play", function() {
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    playButton.classList.add("playing");
+});
+
+audioPlayer.addEventListener("ended", function() {
     playIcon.style.display = 'block';
     pauseIcon.style.display = 'none';
     seekBar.value = 0;
