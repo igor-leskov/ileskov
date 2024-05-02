@@ -1,5 +1,42 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
+    var videos = document.querySelectorAll('.video');
     var musicItems = document.querySelectorAll(".music-item");
+    var currentVideo = null;
+    var currentAudioPlayer = null;
+
+    videos.forEach(function(video) {
+        video.addEventListener('loadeddata', function() {
+            var videoKey = video.dataset.key; 
+            var savedTime = localStorage.getItem(videoKey); 
+            if (savedTime) {
+                video.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        video.addEventListener('play', function(event) {
+            var currentVideo = event.target;
+
+            videos.forEach(function(v) {
+                if (v !== currentVideo) {
+                    v.pause();
+                }
+            });
+
+            if (currentAudioPlayer) {
+                currentAudioPlayer.pause();
+            }
+        });
+
+        video.addEventListener('pause', function() {
+            var videoKey = video.dataset.key; 
+            localStorage.setItem(videoKey, video.currentTime); 
+        });
+
+        video.addEventListener('ended', function() {
+            var videoKey = video.dataset.key;
+            localStorage.removeItem(videoKey);
+        });
+    });
 
     musicItems.forEach(function(item, index) {
         var playButton = item.querySelector(".play-button");
@@ -30,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 audioPlayer.play();
                 playButton.innerHTML = "&#10074;&#10074;";
                 playButton.classList.add("playing");
+
+                if (currentVideo) {
+                    currentVideo.pause();
+                }
             } else {
                 audioPlayer.pause();
                 localStorage.setItem(audioSrc, audioPlayer.currentTime);
@@ -59,4 +100,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-var currentAudioPlayer = null;
