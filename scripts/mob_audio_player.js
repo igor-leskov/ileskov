@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     var currentAudioPlayer = null;
     var musicItems = document.querySelectorAll(".music-item");
+    var videoElement = document.querySelector("video");
 
     musicItems.forEach(function(item, index) {
         var playButton = item.querySelector(".play-button");
@@ -89,6 +90,17 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem(audioSrc, audioPlayer.currentTime); 
         });
     });
+
+    videoElement.addEventListener("play", function() {
+        if (currentAudioPlayer) {
+            currentAudioPlayer.pause();
+            var playButton = document.querySelector(".playing");
+            if (playButton) {
+                playButton.querySelector(".pause-icon").style.display = 'none';
+                playButton.querySelector(".play-icon").style.display = 'block';
+                playButton.classList.remove("playing");
+            }
+            currentAudioPlayer = null;
+        }
+    });
 });
-
-
