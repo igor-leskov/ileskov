@@ -28,7 +28,6 @@
     width: 30px;
     height: 30px;
     font-size: 30px;
-    font-weight: 700;
     transition: background-color .3s, transform .3s;
     cursor: pointer;
     color: #fff;
