@@ -17,7 +17,6 @@ function checkNetworkLoad(url, dataTransferred) {
     }
 }
 
-var url = "https://ileskov.online"; 
 var dataTransferred = [10000, 20000, 30000]; 
 
-console.log(checkNetworkLoad(url, dataTransferred));
+console.log(checkNetworkLoad("https://ileskov.online", dataTransferred));
