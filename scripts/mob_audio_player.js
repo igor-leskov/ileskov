@@ -47,13 +47,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         audioPlayer.addEventListener("ended", function() {
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-            seekBar.value = 0;
-            localStorage.removeItem(audioSrc); 
-            if (index < musicItems.length - 1) {
-                var nextButton = musicItems[index + 1].querySelector(".play-button");
-                nextButton.click();
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    seekBar.value = 0;
+    localStorage.removeItem(audioSrc); 
+    if (index < musicItems.length - 1) {
+        var playButtonPrev = musicItems[index].querySelector(".playing");
+        if (playButtonPrev) {
+            playButtonPrev.querySelector(".pause-icon").style.display = 'none';
+            playButtonPrev.querySelector(".play-icon").style.display = 'block';
+            playButtonPrev.classList.remove("playing");
+        }
+        var nextButton = musicItems[index + 1].querySelector(".play-button");
+        nextButton.click();
             }
         });
 
