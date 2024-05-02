@@ -1,52 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
     var videos = document.querySelectorAll('.video');
-    var audios = document.querySelectorAll('.audio');
+    var playButtons = document.querySelectorAll('.play-button');
 
     videos.forEach(function(video) {
-        
-        video.addEventListener('loadeddata', function() {
-            var videoKey = video.dataset.key;
-            var savedTime = localStorage.getItem(videoKey);
-            if (savedTime) {
-                video.currentTime = parseFloat(savedTime);
+   
+    });
+
+    playButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var audioSrc = button.getAttribute('data-src');
+            var audio = new Audio(audioSrc);
+            var isPlaying = button.classList.contains('playing');
+
+            if (!isPlaying) {
+                
+                stopAllMedia();
+                audio.play();
+                button.classList.add('playing');
+                button.innerHTML = '&#10074;&#10074;'; 
+            } else {
+                audio.pause();
+                button.classList.remove('playing');
+                button.innerHTML = '&#9658;'; 
+            }
+
+            button.audio = audio;
+        });
+    });
+
+    function stopAllMedia() {
+        // Остановка всех аудио
+        playButtons.forEach(function(btn) {
+            if (btn.audio && btn.classList.contains('playing')) {
+                btn.audio.pause();
+                btn.classList.remove('playing');
+                btn.innerHTML = '&#9658;';
             }
         });
 
-        video.addEventListener('play', function(event) {
-            var currentVideo = event.target;
-
-            
-            videos.forEach(function(v) {
-                if (v !== currentVideo) {
-                    v.pause();
-                }
-            });
-
-          
-            audios.forEach(function(audio) {
-                audio.pause();
-            });
+        videos.forEach(function(video) {
+            video.pause();
         });
-
-        video.addEventListener('pause', function() {
-            var videoKey = video.dataset.key;
-            localStorage.setItem(videoKey, video.currentTime);
-        });
-
-        video.addEventListener('ended', function() {
-            var videoKey = video.dataset.key;
-            localStorage.removeItem(videoKey);
-        });
-    });
-
-   
-    audios.forEach(function(audio) {
-        audio.addEventListener('play', function() {
-           
-            videos.forEach(function(video) {
-                video.pause();
-            });
-        });
-    });
+    }
 });
+
 
