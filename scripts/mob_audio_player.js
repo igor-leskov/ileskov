@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var playIcon = playButton.querySelector(".play-icon");
         var pauseIcon = playButton.querySelector(".pause-icon");
 
-        // Восстановление сохраненной позиции при загрузке аудио
         audioPlayer.addEventListener("loadeddata", function() {
             var savedTime = localStorage.getItem(audioSrc);
             if (savedTime) {
@@ -58,10 +57,12 @@ document.addEventListener("DOMContentLoaded", function() {
             playButtonPrev.querySelector(".play-icon").style.display = 'block';
             playButtonPrev.classList.remove("playing");
         }
-        var nextButton = musicItems[index + 1].querySelector(".play-button");
-        nextButton.click();
-            }
-        });
+        setTimeout(function() {
+            var nextButton = musicItems[index + 1].querySelector(".play-button");
+            nextButton.click();
+        }, 100);
+    }
+});
 
         audioPlayer.addEventListener("timeupdate", function() {
             if (!isNaN(audioPlayer.duration)) {
