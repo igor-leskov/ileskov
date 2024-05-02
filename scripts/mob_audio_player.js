@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var playIcon = playButton.querySelector(".play-icon");
         var pauseIcon = playButton.querySelector(".pause-icon");
 
+        // Восстановление сохраненной позиции при загрузке аудио
         audioPlayer.addEventListener("loadeddata", function() {
             var savedTime = localStorage.getItem(audioSrc);
             if (savedTime) {
