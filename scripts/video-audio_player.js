@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         video.addEventListener('play', function(event) {
-            var currentVideo = event.target;
+            currentVideo = event.target;
 
             videos.forEach(function(v) {
                 if (v !== currentVideo) {
