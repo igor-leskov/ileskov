@@ -102,5 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
             audioPlayer.currentTime = seekBar.value;
             localStorage.setItem(audioSrc, seekBar.value); 
         });
+
+        audioPlayer.addEventListener('play', function() {
+            if (currentVideo && !currentVideo.paused) {
+                currentVideo.pause();
+            }
+        });
     });
 });
