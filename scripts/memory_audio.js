@@ -7,7 +7,7 @@ function checkNetworkLoad(url, dataTransferred) {
         return "Массив переданных данных пуст.";
     }
 
-    var threshold = 50000;
+    var threshold = 100000;
     var totalDataTransferred = dataTransferred.reduce(function(a, b) { return a + b; }, 0);
 
     if (totalDataTransferred > threshold) {
