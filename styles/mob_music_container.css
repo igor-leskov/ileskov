@@ -21,7 +21,7 @@
             padding: 0;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	    position: relative; 
-            top: -234px;
+            top: -233px;
         }
 
         .window h3 {
@@ -123,13 +123,6 @@
     font-size: 11px;
     margin-top: 25px;
     transform: translateY(-25px);
-}
-
-@media screen and (max-width: 768px) {
-    .music-title {
-        font-size: 11px;
-        transform: translateY(-25px);
-    }
 }
 
 .music-container::-webkit-scrollbar {
