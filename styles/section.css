@@ -36,6 +36,15 @@
 	.section {
             box-shadow: 0 2px 5px rgba(51, 51, 51, 0.5);
         }
+
+        .window {
+            background-color: #e83f33;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	    position: relative; 
+            top: -323px;
+        }
 	
         a {
             text-decoration: none;
