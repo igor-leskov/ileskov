@@ -23,9 +23,17 @@
         }
 
         h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #000;
+           font-size: 24px;
+           margin-bottom: 10px;
+           color: #000;
+           margin-left: 25px;
+    
+        }
+
+        h2 i {
+          top: 152px;
+          position: absolute;
+          left: 35px;
         }
         
         p {
