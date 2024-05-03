@@ -16,18 +16,19 @@
 }
 
 .window {
-            background-color: #e83f33;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	    position: relative; 
-            top: -233px;
-        }
+    background-color: #e83f33;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    position: relative;
+    top: -231px
+}
 
-        .window h3 {
-            font-size: 12px;
-            line-height: 1.6
-        }        
+.window h3 {
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
 
 .music-cover {
     position: relative;
