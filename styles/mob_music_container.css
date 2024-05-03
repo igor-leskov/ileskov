@@ -120,13 +120,17 @@
 }
 
 .music-title {
-    font-size: 11px; 
-    margin-top: 25px; 
+    font-size: 11px;
+    margin-top: 25px;
+    transform: translateY(-25px);
 }
 
 @media screen and (max-width: 768px) {
     .music-title {
         font-size: 11px;
+        transform: translateY(-25px);
+        margin-top: 25px;
+    
     }
 }
 
