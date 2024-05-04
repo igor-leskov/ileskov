@@ -63,3 +63,7 @@
              top: 2px;
              position: relative;
         }
+
+        .txt {
+            text-align: center;
+        }
