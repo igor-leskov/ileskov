@@ -73,3 +73,8 @@
             line-height: 1.6;
             text-align: center;
         }
+
+        .home1 {
+            top: 2px;         
+            position: relative;        
+        }
