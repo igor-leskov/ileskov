@@ -19,7 +19,7 @@
           margin-top: 60px; 
           left: 0;
           width: 100%;
-          background-color: #fff;
+          background-color: #333;
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
           transition: margin-top 0.3s ease-in-out; 
           height: 200px; 
@@ -109,7 +109,7 @@
 
         header nav ul li {
                padding: 10px;
-               color: #000;
+               color: #fff;
         }
 
         header nav ul li a {
