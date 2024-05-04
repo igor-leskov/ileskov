@@ -58,3 +58,8 @@
         .section:hover a {
              color: #fff; 
         }
+
+        .home1 {
+             top: 2px;
+             position: relative;
+        }
