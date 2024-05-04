@@ -66,8 +66,7 @@ main {
 
 header nav {
     display: none;
-    position: absolute;
-    top: calc(100% + 10px); 
+    position: absolute; 
     margin-top: 60px; 
     left: 0;
     width: 100%;
