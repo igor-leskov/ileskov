@@ -25,6 +25,7 @@
             font-size: 24px;
             margin-bottom: 10px;
             color: #000;
+	    text-align: center;
         }
 
         p {
@@ -43,4 +44,16 @@
 
         .section:hover a {
              color: #fff; 
+        }
+
+        .txt {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .txt1 {
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
         }
