@@ -63,6 +63,8 @@
          animation: pulse-red 2s infinite alternate; 
          transition: transform 0.3s ease, opacity 0.3s ease;
          will-change: transform, box-shadow;
+	 margin-top: 30px;
+			margin-bottom: 20px;
         }
 
         .artist-image4 img {
