@@ -35,7 +35,7 @@
 }
 
 .gallery-item img:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 .image-description_1 {
