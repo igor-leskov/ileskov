@@ -41,3 +41,7 @@
 .image-description_1 {
     margin-top: 10px;
 }
+
+.large-gallery-item {
+    flex: 0 0 calc(50% - 20px);
+}
