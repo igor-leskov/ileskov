@@ -44,7 +44,7 @@
 }
 
 .music-cover:hover {
-    transform: scale(0.9);
+    transform: scale(1.0);
 }
 
 .music-cover img {
