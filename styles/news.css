@@ -1,4 +1,4 @@
-        .news-feed {
+         .news-feed {
            display: flex;
 		   overflow-x: auto;
            gap: 20px;
@@ -65,44 +65,20 @@
         }
 
         .time {
-    font-style: italic;
-    font-size: 14px;
-    color: #000;
-    display: inline-block;
-    margin-bottom: 15px;
-    margin-left: 100px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    position: relative; 
-    overflow: hidden; 
-}
-
-.time::before {
-    content: ''; 
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 80%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 0, 0) 0%, rgb(255 255 0 / 34%) 50%, rgba(255, 255, 0, 0) 100%);
-    animation: wave 15s linear infinite; 
-}
-
-@keyframes wave {
-    0% {
-        left: -80%;
-    }
-    50% {
-        left: 150%;
-    }
-    100% {
-        left: -80%;
-    }
+           font-style: italic;
+           font-size: 14px;
+           color: #000;
+           display: inline-block; 
+           margin-bottom: 15px;
+           margin-left: 100px;
+           font-weight: bold; 
+           text-transform: uppercase; 
+           letter-spacing: 1px; 
+           line-height: 1.2;
+           padding: 10px 20px; 
+           border-radius: 10px; 
+           background-color: #f0f0f0; 
+       }
 
        .carousel {
            position: relative;
@@ -144,6 +120,5 @@
         .prev1:hover, .next1:hover {
            background-color: rgb(233 63 52);
         }
-
 
 
