@@ -1,32 +1,31 @@
         .language-switcher {
-            display: flex;
-            margin-right: 30px;
-            animation: appear 0.5s ease forwards; 
-            opacity: 0; 
-        }
+    display: flex;
+    margin-right: 30px;
+    animation: appear 0.5s ease forwards; 
+    opacity: 0; 
+}
 
-        @keyframes appear {
-            from {
-            opacity: 0; 
-            transform: translateY(-20px); 
-        }
-            to {
-            opacity: 1; 
-            transform: translateY(0); 
-        }
+@keyframes appear {
+    from {
+        opacity: 0; 
+        transform: translateY(-20px); 
     }
+    to {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
 
-        .language-link img {
-             width: 40px;
-             height: 40px;
-             margin-right: -20px;
-             transition: transform .3s ease;
-     }
+.language-link img {
+    width: 40px;
+    height: 40px;
+    margin-right: -20px;
+    transition: transform 0.3s ease; 
+}
 
-        .language-link img:hover {
-             transform: scale(0.8); 
-     }
+.language-link:hover img {
+    transform: scale(0.9); 
+}
 
-        .language-link:active img,
-        .language-link:focus img {
-             border-bottom: 2px solid #fff; 
+.language-link:hover {
+    text-decoration: underline; 
