@@ -17,12 +17,16 @@
     }
 
         .language-link img {
-            width: 40px;
-            height: 40px;
-            margin-right: -20px;
-            transition: transform 0.3s ease; 
-        }
+             width: 40px;
+             height: 40px;
+             margin-right: -20px;
+             transition: transform .3s ease;
+     }
 
-        .language-link:hover img {
-            transform: scale(0.9); 
-        }
+        .language-link img:hover {
+             transform: scale(0.8); 
+     }
+
+        .language-link:active img,
+        .language-link:focus img {
+             border-bottom: 2px solid #fff; 
