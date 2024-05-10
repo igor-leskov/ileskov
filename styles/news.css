@@ -80,6 +80,7 @@
     background-color: #f0f0f0;
     position: relative; 
     overflow: hidden; 
+}
 
 .time::before {
     content: ''; 
