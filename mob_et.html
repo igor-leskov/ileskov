@@ -122,12 +122,60 @@
   }
 }
   </style>
+
+	<style>
+    .logo1 {
+  width: 135px;
+  height: 32px; 
+  position: relative;
+}
+
+.logo1 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.logo1 img:first-child {
+  opacity: 1;
+  animation: none; 
+}
+
+.frame1 {
+  width: 100%;
+  height: 100%;
+  animation: fadeInOut 5s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 20% { 
+    opacity: 0;
+  }
+  25%, 45% { 
+    opacity: 1;
+  }
+  50%, 70% { 
+    opacity: 0;
+  }
+  75%, 95% { 
+    opacity: 1;
+  }
+}
+    </style>
 	
 	</head>
 <body>
 
 	<div class="flyer-container">
-    <img src="images/lime_academy_logo.webp" alt="lime_academy_logo" class="logo1" width="135" height="32" loading="eager">
+    <div class="logo1">
+        <img src="images/lime_academy_logo.webp" alt="&copy; lime_academy_logo Lime Academy" width="135" height="32" loading="eager" class="frame1">
+        <img src="images/lime_academy_logo1.webp" alt="lime_academy_logo_1" width="135" height="32" loading="eager" class="frame1">
+        <img src="images/lime_academy_logo2.webp" alt="lime_academy_logo_2" width="135" height="32" loading="eager" class="frame1">
+		<img src="images/lime_academy_logo3.webp" alt="lime_academy_logo_3" width="135" height="32" loading="eager" class="frame1">
+		<img src="images/lime_academy_logo4.webp" alt="lime_academy_logo_4" width="135" height="32" loading="eager" class="frame1">
+    </div>
     <h3>Teenige koos meiega! Lime Academy 🌈🌱</h3>
     <a href="https://t.me/cashlimeacademy" class="telegram-link" target="_blank">
   <img src="images/icon_telegram.webp" class="telegram" alt="Icon Telegram" width="16" height="16" style="vertical-align: middle;" loading="eager">
@@ -869,6 +917,15 @@
          });
        });
    </script>
+
+			 <script>
+window.addEventListener('load', function() {
+  var frames = document.querySelectorAll('.logo1 .frame1');
+  frames.forEach(function(frame, index) {
+    frame.style.animationDelay = (0.5 * index) + 's';
+  });
+});
+</script>
 	
 </body>
 </html>
