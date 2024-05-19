@@ -3,7 +3,7 @@ DirectoryIndex index.html
 
 RewriteEngine On
 RewriteCond %{HTTP_USER_AGENT} "iPhone|Android|Blackberry|Opera Mini|IEMobile" [NC]
-RewriteRule ^(.*)$ http://m.example.com/$1 [L,R=302]
+RewriteRule ^(.*)$ http://ileskov.online/mob.html/$1 [L,R=302]
 
 <IfModule mod_expires.c>
     ExpiresActive On
